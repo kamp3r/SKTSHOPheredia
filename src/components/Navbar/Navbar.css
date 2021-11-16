@@ -1,0 +1,121 @@
+.NavbarItems{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(90deg, #f1ad4c 0%, #f3c65b 100%);
+    height: 7rem;
+    font-size: 3rem;
+}
+
+.menuIcono{
+    display: none;
+}
+
+.navbarLogo{
+    margin-left: 2rem;
+    cursor: pointer;
+    font-family: 'Righteous', cursive;
+}
+
+.fa-usps{
+    margin-left: .5rem;
+    font-size: 4rem;
+}
+
+.navMenu{
+    display: grid;
+    grid-template-columns: repeat(5, auto);
+    grid-gap: 1rem;
+    list-style: none;
+    text-align: center;
+    align-items: center;
+    justify-items: center;
+    margin-right: 2rem;
+    
+}
+
+.nav-links{
+    color: #000;
+    text-decoration: none;
+    padding: .1rem 1.2rem;
+    margin: 1rem;
+    font-size: 2.3rem;
+    text-transform: uppercase;
+}
+
+.nav-links:hover{
+    background-color: #ec9e20;
+    border-radius: 2rem;
+    transition: all .3s ease-in-out;
+    color: #fafafa;
+}
+
+@media screen and (max-width: 960px) {
+    .NavbarItems{
+        position: relative;
+    }
+
+    .navMenu{
+        display: flex;
+        background: linear-gradient(90deg, #f1ad4c 0%, #f3c65b 100%);
+        flex-direction: column;
+        width: 100%;
+        height: 35rem;
+        position: absolute;
+        top: 7rem;
+        left: -100%;
+        opacity: 1;
+        transition: all .4s ease-in;
+        z-index: 1;
+        margin-right: 0rem;
+    }
+
+    .navMenu.activo{
+        background: linear-gradient(90deg, #f1ad4c 0%, #f3c65b 100%);
+        left: 0;
+        opacity: 1;
+        transition: all .4s ease-out;
+        z-index: 1;
+    }
+
+    .nav-links{
+        text-align: center;
+        padding: 2rem 2rem;
+        display: table;
+        margin: 0rem;
+    }
+
+    .nav-links:hover{
+        width: 100rem;
+        background: rgba(59, 59, 59, 0.473);
+        border-radius: 0;
+        color: #fafafa;
+    }
+
+    .navbarLogo{
+        font-size: 3rem;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: translate(-8%, 20%)
+    }
+    .menuIcono{
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        transform: translate(-350%, 35%);
+        font-size: 2.5rem;
+        cursor: pointer;
+    }
+
+    .menuIcono:hover{
+        color: #fafafa;
+    }
+
+    .fa-times{
+        position: relative;
+        left: -2rem;
+    }
+
+}
