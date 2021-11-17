@@ -1,0 +1,62 @@
+.itemCount{
+    display: flex;
+    flex-direction: column;
+    height: 10rem;
+    width: 25rem;
+    border: 1px solid #000;
+}
+
+.tituloObjeto{
+    font-size: 2.5rem;
+}
+
+.containerButtons{
+    display: flex;
+    justify-content: center;
+    height: 3rem;
+}
+
+.numeroSeleccionado{
+    padding: 0 1rem;
+    background: #fafafa;
+    border: none;
+}
+
+.ButtCount{
+    width: 100%;
+    border: 1px solid #f1ad4c;
+    background: radial-gradient(circle, rgba(241,173,76,1) 0%, rgba(247,216,140,1) 0%, rgba(233,167,9,1) 95%); 
+    cursor: pointer;
+}
+
+.ButtCount:hover{
+    background: radial-gradient(circle, rgba(241, 172, 76, 0.685) 0%, rgba(247, 217, 140, 0.685) 0%, rgba(233, 166, 9, 0.692) 95%)
+}
+
+.ButtCount:active{
+    background: radial-gradient(circle, rgba(245, 162, 46, 0.801) 0%, rgba(243, 207, 117, 0.904) 0%, rgba(255, 185, 21, 0.863) 95%);
+    box-shadow: 0 5px radial-gradient(circle, rgba(245, 162, 46, 0.801) 0%, rgba(243, 207, 117, 0.904) 0%, rgba(255, 185, 21, 0.863) 95%);
+}
+
+.numeroSeleccionado, .stockDisponible{
+    font-size: 2rem;
+}
+
+
+.agregarItem{
+    background: #000;
+    color: #fafafa;
+    border: none;
+    cursor: pointer;
+    margin-top: 1rem;
+    height: 5rem;
+}
+
+.agregarItem:hover{
+    background: rgba(0, 0, 0, 0.815);
+}
+
+.agregarItem:active{
+    background: radial-gradient(circle, rgb(5, 5, 4) 0%, rgb(0, 0, 0) 0%, rgb(19, 14, 5) 95%);
+    box-shadow: 0 5px radial-gradient(circle, rgba(5, 5, 4, 0.671) 0%, rgba(0, 0, 0, 0.719) 0%, rgba(19, 14, 5, 0.863) 95%);
+}

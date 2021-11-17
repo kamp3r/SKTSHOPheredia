@@ -4,7 +4,7 @@ import './CartWidget.css'
 const CartWidget = () => {
     return (
         <div className ="contenedorCart">
-            <i class='fas fa-shopping-cart'></i>
+            <i className='fas fa-shopping-cart'></i>
         </div>
     )
 }
