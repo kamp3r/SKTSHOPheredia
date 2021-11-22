@@ -1,12 +1,12 @@
 import React, {Fragment} from 'react';
 import './App.css';
-import Navbar from './components/Navbar/Navbar';
+import Header from './components/Header/Header';
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
 
 function App() {
   return (
     <Fragment>
-      <Navbar />
+      <Header />
       <ItemListContainer greeting="Bienvenido a SKTSHOP!" />
     </Fragment>
   );

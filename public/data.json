@@ -1,0 +1,60 @@
+[
+    {
+        "id": 1,
+        "nombre": "Tony Hawk Eye of the Hawk",
+        "stock": 10,
+        "precio": 10300,
+        "imagen": "./images/skatetony2.jpg"
+    },
+    {
+        "id": 2,
+        "nombre": "Tony Hawk Diving Hawk",
+        "stock": 3,
+        "precio": 10300,
+        "imagen": "./images/skatetony.jpg"
+    },
+    {
+        "id": 3,
+        "nombre": "Verb Adam Bergeisha",
+        "stock": 6,
+        "precio": 10300,
+        "imagen": "./images/geishaskate.jpg"
+    },
+    {
+        "id": 4,
+        "nombre": "Birdhouse Medusa",
+        "stock": 3,
+        "precio": 10300,
+        "imagen": "./images/skatemedusa.jpg"
+    },
+    {
+        "id": 5,
+        "nombre": "Hydroponic Pullet Mike",
+        "stock": 2,
+        "precio": 10300,
+        "imagen": "./images/skaterat.jpg"
+    },
+    {
+        "id": 6,
+        "nombre": "Hydroponic Mexican Skull",
+        "stock": 6,
+        "precio": 10300,
+        "imagen": "./images/skatemex.jpg"
+    },
+    {
+        "id": 7,
+        "nombre": "Birdhouse Chicken",
+        "stock": 2,
+        "precio": 10300,
+        "imagen": "./images/birdchiken.jpg"
+    },
+    {
+        "id": 8,
+        "nombre": "Heart Supply Peace",
+        "stock": 2,
+        "precio": 10300,
+        "imagen": "./images/skateheart.jpg"
+    }
+]
+
+

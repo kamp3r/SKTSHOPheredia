@@ -1,31 +1,16 @@
 import React from 'react'
 import './ItemListContainer.css'
-import ItemCount from '../ItemCount/ItemCount'
+import ItemList from '../ItemList/ItemList'
+import Carrousel from '../Carrousel/Carrousel'
+
 
 const ItemListContainer = ({greeting}) => {
     return (
         <>
             <div className="ListContainer">
-                {greeting}
+                <Carrousel />
                 <div className='containerElement'>
-                    <ItemCount
-                       initial={1}
-                        stock={10}/>
-
-                    <ItemCount
-                    initial={0}
-                    stock={0}
-                    />
-
-                    <ItemCount
-                    initial={1}
-                    stock={30}
-                    />
-
-                    <ItemCount
-                    initial={1}
-                    stock={2}
-                    />
+                    <ItemList />
                 </div>  
             </div>
             
