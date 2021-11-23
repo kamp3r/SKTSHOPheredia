@@ -4,6 +4,6 @@
     grid-template-columns: repeat( auto-fit, minmax(35rem, 1fr) );
     align-items: center;
     justify-items: center;
-    background: linear-gradient(180deg, #adaba7 0%, #535353 100%);
+    background-color: #fafafa;
     padding: 4rem 0;
 }

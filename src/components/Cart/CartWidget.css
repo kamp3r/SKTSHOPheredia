@@ -2,6 +2,7 @@
     margin-right: 5rem;
     cursor: pointer;
     overflow: hidden;
+    color: #000;
 }
 
 .fa-shopping-cart:hover{

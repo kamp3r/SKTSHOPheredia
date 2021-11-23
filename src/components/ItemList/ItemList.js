@@ -11,9 +11,9 @@ const ItemList = () => {
         fetch('./data.json')
         .then((Response) => Response.json())
         .then((data) => setProducts(data));
-    }, 2000)
+    }, 2000)    
     },[]);
-
+    
     return (
         <div className="grillaProductos">
             {products.map((product) =>{
