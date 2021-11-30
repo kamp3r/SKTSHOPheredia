@@ -1,16 +1,14 @@
 import React from 'react'
 import './Item.css'
 import ItemCount from '../ItemCount/ItemCount'
+import { Link } from "react-router-dom";
 
-const Item = ({data}) => {
+const Item = ({ item }) => {
     return (
         <div className="cardProducto">
-            <img className="cardImage" src={`${process.env.PUBLIC_URL}/${data.imagen}`} alt="imagen producto"/>
-            <div className="productData">
-                <h2>{data.nombre}</h2>
-                <ItemCount initial={1}
-                            stock={data.stock}/>
-            </div>
+            <Link to={`/items/${item.categoryId}/${item.id}`}><img className="cardImage" src={item.imagen} alt={item.nombre} /></Link>
+            <h2>{item.nombre}</h2>
+            <ItemCount initial={0} stock={item.stock} />
         </div>
     )
 }

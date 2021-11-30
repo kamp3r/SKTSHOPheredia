@@ -1,14 +1,23 @@
-import React, {Fragment} from 'react';
-import './App.css';
-import Header from './components/Header/Header';
-import ItemListContainer from './components/ItemListContainer/ItemListContainer';
+import React from "react";
+import "./App.css";
+import Header from "./components/Header/Header";
+import Carrousel from "./components/Carrousel/Carrousel";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer";
+import Home from "./components/Views/Home";
+import Category from "./components/Views/Category";
 
 function App() {
   return (
-    <Fragment>
+    <Router>
       <Header />
-      <ItemListContainer greeting="Bienvenido a SKTSHOP!" />
-    </Fragment>
+      <Carrousel />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path='/category/:categoryId' element={<Category />} />
+        <Route path="/items/:categoryId/:id" element={<ItemDetailContainer/>} />
+      </Routes>
+    </Router>
   );
 }
 

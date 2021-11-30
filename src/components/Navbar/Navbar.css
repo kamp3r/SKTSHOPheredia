@@ -7,6 +7,10 @@
     font-size: 3rem;
 }
 
+a{
+    text-decoration: none;
+}
+
 .menuIcono{
     display: none;
 }
@@ -15,12 +19,10 @@
     color: #000;
     margin-left: 2rem;
     cursor: pointer;
-    font-family: 'Righteous', cursive;
 }
 
 .fa-usps{
-    margin-left: .5rem;
-    font-size: 4rem;
+    font-size: 8rem;
 }
 
 .navMenu{
@@ -35,6 +37,25 @@
     
 }
 
+.logolink{
+    display: flex;
+    align-items: center;
+    color: #000;
+    text-decoration: none;
+}
+
+.nameShop{
+    width: 5rem;
+    font-size: 3.5rem;
+    font-family: 'Righteous', cursive;
+}
+
+.logolink:hover{
+    color: #000;
+}
+
+
+
 .nav-links{
     color: #000;
     text-decoration: none;
@@ -44,6 +65,12 @@
     text-transform: uppercase;
 }
 
+.active{
+    background-color: #ec9e20;
+    border-radius: 2rem;
+    color: #fafafa;
+}    
+
 .nav-links:hover{
     background-color: #ec9e20;
     border-radius: 2rem;
@@ -51,9 +78,19 @@
     color: #fafafa;
 }
 
+
+
 @media screen and (max-width: 960px) {
     .NavbarItems{
         position: relative;
+    }
+
+    .nameShop{
+        font-size: 3rem;
+        font-family: 'Righteous', cursive;
+    }
+    .fa-usps{
+        font-size: 7rem;
     }
 
     .navMenu{
@@ -76,7 +113,7 @@
         left: 0;
         opacity: 1;
         transition: all .4s ease-out;
-        z-index: 1;
+        z-index: 2;
     }
 
     .nav-links{
@@ -94,11 +131,10 @@
     }
 
     .navbarLogo{
-        font-size: 3rem;
         position: absolute;
         top: 0;
         left: 0;
-        transform: translate(-8%, 20%)
+        transform: translate(-15%, -5%)
     }
     .menuIcono{
         display: block;
