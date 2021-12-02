@@ -27,7 +27,7 @@ const Navbar = () => {
           Calzado
         </NavLink>
       </ul>
-      <CartWidget />
+      <Link to="/Cart"><CartWidget /></Link>
     </nav>
   );
 };

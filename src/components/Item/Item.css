@@ -1,19 +1,64 @@
-.cardProducto{
-    display: flex;
-    flex-direction: column;
-    width: 35rem;
-    height: fit-content;
-    border: 1px solid #d1a11e;
-    box-shadow: 2px 10px 24px -2px rgba(0,0,0,0.75);
-    background-color: #000000;
-    color: #fafafa;
+.cardProducto {
+  display: flex;
+  flex-direction: column;
+  width: 35rem;
+  height: fit-content;
+  border: 1px solid #d1a11e;
+  box-shadow: 2px 10px 24px -2px rgba(0, 0, 0, 0.75);
+  background-color: #000000;
+  color: #fafafa;
 }
 
-.cardImage{
-    width: 100%;
-    height: 100%;
+.cardImage {
+  width: 100%;
+  height: 100%;
 }
 
-.productData{
-    font-size: 3rem;
+.productData {
+  font-size: 3rem;
+}
+
+.verMas {
+  background: radial-gradient(
+    circle,
+    rgba(245, 162, 46, 0.801) 0%,
+    rgba(243, 207, 117, 0.904) 0%,
+    rgba(255, 185, 21, 0.863) 95%
+  );
+  color: #000000;
+  border: none;
+  cursor: pointer;
+  margin-top: 1rem;
+  height: 8rem;
+  width: 100%;
+  font-size: 2rem;
+}
+
+.linkVerMas {
+  line-height: 0px;
+}
+
+.verMas:hover {
+  background: radial-gradient(
+    circle,
+    rgba(241, 172, 76, 0.685) 0%,
+    rgba(247, 217, 140, 0.685) 0%,
+    rgba(233, 166, 9, 0.692) 95%
+  );
+}
+
+.verMas:active {
+  background: radial-gradient(
+    circle,
+    rgba(245, 162, 46, 0.801) 0%,
+    rgba(243, 207, 117, 0.904) 0%,
+    rgba(255, 185, 21, 0.863) 95%
+  );
+  box-shadow: 0 5px
+    radial-gradient(
+      circle,
+      rgba(245, 162, 46, 0.801) 0%,
+      rgba(243, 207, 117, 0.904) 0%,
+      rgba(255, 185, 21, 0.863) 95%
+    );
 }
