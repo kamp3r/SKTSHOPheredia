@@ -4,15 +4,19 @@ import "./ItemCount.css";
 
 const ItemCount = ({ initial, stock, onAdd, item}) => {
   const [elementos, setElementos] = useState(initial);
+  const [disabledAdd, setDisabledAdd] = useState(true);
   const [disabledSuma, setDisabledSuma] = useState(false);
   const [disabledResta, setDisabledResta] = useState(false);
+  
 
   useEffect(() => {
     if (elementos > initial || stock < elementos) {
       setDisabledResta(false);
       setDisabledSuma(false);
+      setDisabledAdd(false);
     } else if (elementos <= initial) {
       setDisabledResta(true);
+      setDisabledAdd(true);
     }
     if (elementos >= stock) {
       setDisabledSuma(true);
@@ -20,8 +24,11 @@ const ItemCount = ({ initial, stock, onAdd, item}) => {
   }, [elementos, initial, stock]);
 
   function addCart() {
+    if (elementos>0){
     onAdd(elementos);
-    alert(`Agregaste ${elementos} de ${item.nombre} a tu carrito`)
+  } else{
+
+  }
   }
 
   const suma = () => {
@@ -55,7 +62,7 @@ const ItemCount = ({ initial, stock, onAdd, item}) => {
           Nos quedan en stock: {stock} unidades
         </span>
       </div>
-      <button className="agregarItem" onClick={addCart}>
+      <button className="agregarItem" disabled={disabledAdd} onClick={addCart}>
         Agregar al carrito
       </button>
     </div>

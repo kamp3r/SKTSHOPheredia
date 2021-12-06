@@ -7,19 +7,25 @@ import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailCont
 import Home from "./components/Views/Home";
 import Category from "./components/Views/Category";
 import Cart from "./components/Cart/Cart";
+import { CartProvider } from "./components/Cart/CartContext";
 
 function App() {
   return (
-    <Router>
-      <Header />
-      <Carrousel />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path='/category/:categoryId' element={<Category />} />
-        <Route path="/items/:categoryId/:id" element={<ItemDetailContainer/>} />
-        <Route path="/cart" element={<Cart />} />
-      </Routes>
-    </Router>
+    <CartProvider>
+      <Router>
+        <Header />
+        <Carrousel />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/category/:categoryId" element={<Category />} />
+          <Route
+            path="/items/:categoryId/:id"
+            element={<ItemDetailContainer />}
+          />
+          <Route path="/cart" element={<Cart />} />
+        </Routes>
+      </Router>
+    </CartProvider>
   );
 }
 

@@ -1,12 +1,18 @@
 .fa-shopping-cart {
   margin-right: 5rem;
   cursor: pointer;
-  overflow: hidden;
   color: #000;
 }
 
 .fa-shopping-cart:hover {
   color: #fafafa;
+}
+
+.badge{
+  font-size: 13px !important;
+  position: relative;
+  top: -1.8rem;
+  left: -.5rem;
 }
 
 @media screen and (max-width: 960px) {
@@ -21,6 +27,5 @@
     margin-right: 0rem;
     margin-left: -5rem;
     cursor: pointer;
-    overflow: hidden;
   }
 }

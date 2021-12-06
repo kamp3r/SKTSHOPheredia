@@ -79,6 +79,8 @@
   background: #926527cb;
 }
 
+
+
 .agregarItem {
   background: radial-gradient(
     circle,
@@ -117,4 +119,7 @@
       rgba(243, 207, 117, 0.904) 0%,
       rgba(255, 185, 21, 0.863) 95%
     );
+}
+.agregarItem:disabled{
+  background: #926527cb;
 }

@@ -39,6 +39,19 @@ h4{
     height: 6rem;
     width: 25rem;
     font-size: 2rem;
+    border-radius: 1rem;
+}
+
+.borrarElemento{
+    background: radial-gradient(circle, rgba(245, 162, 46, 0.801) 0%, rgba(243, 207, 117, 0.904) 0%, rgba(255, 185, 21, 0.863) 95%);
+    color: #000000;
+    border: none;
+    cursor: pointer;
+    margin-top: 1rem;
+    height: 6rem;
+    width: 25rem;
+    font-size: 2rem;
+    border-radius: 1rem;
 }
 
 @media screen and (max-width: 960px){
