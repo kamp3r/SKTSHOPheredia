@@ -2,9 +2,9 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
-    border: 1px solid black;
     width: 80%;
     margin: 0 auto;
+
 }
 
 .imageDetail{
@@ -15,19 +15,34 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     width: 40%;
     color: black;
+    min-height: 68rem;
 }
-h2{
+.nombreDetail{
     font-size: 4rem;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 300;
+    letter-spacing: .2px;
+    margin-bottom: 5rem;
 }
-h3{
+.descripcionDetail{
     font-size: 3;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+    margin-bottom: 5rem;
 }
-h4{
+.precioDetail{
     font-size: 2.5rem;
-    color: #fafafa;
-    background-color: #000;
+    color: #000;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 500;
+    margin-bottom: 5rem;
+}
+
+.stockDisponible{
+    font-family: 'Raleway', sans-serif;
 }
 
 .toCartButton{
@@ -65,13 +80,16 @@ h4{
     .detailsProduct{
         width: 80%;
     }
-    h2{
+    .nombreDetail{
+        font-size: 3.5rem;
+        margin: 2rem 0;
+    }
+    .descripcionDetail{
+        font-size: 3.5;
+        margin: 2rem 0;
+    }
+    .precioDetail{
         font-size: 3rem;
-    }
-    h3{
-        font-size: 2.5;
-    }
-    h4{
-        font-size: 2rem;
+        margin: 2rem 0;
     }
 }

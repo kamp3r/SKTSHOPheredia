@@ -59,7 +59,7 @@ const ItemCount = ({ initial, stock, onAdd, item}) => {
       </div>
       <div className="containerStock">
         <span className="stockDisponible">
-          Nos quedan en stock: {stock} unidades
+          Stock: {stock} unidades
         </span>
       </div>
       <button className="agregarItem" disabled={disabledAdd} onClick={addCart}>

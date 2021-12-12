@@ -1,0 +1,94 @@
+.footer{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background: linear-gradient(90deg, #f1ad4c 0%, #f3c65b 100%);
+    padding-top: 2rem;
+}
+
+.footerLinkContainer{
+    display: flex;
+    flex-direction: column;
+    margin: 0 3rem;
+}
+
+.footLinks{
+    color: #000;
+    text-decoration: none;
+    padding: 0.1rem 1.2rem;
+    margin: 1rem;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.footLinks:hover{
+    background-color: #ec9e20;
+    border-radius: 2rem;
+    transition: all 0.3s ease-in-out;
+    color: #fafafa;
+}
+
+.categoriaFooter{
+    font-size: 2.2rem;
+    text-align: center;
+    color: #363030;
+}
+
+.footerLista{
+    list-style: none;
+    text-align: center;
+}
+
+.iconsContainer{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 9rem;
+}
+.fa-instagram, .fa-facebook-square{
+    font-size: 3rem;
+    margin: 1.2rem;
+    color: black;
+}
+
+.fa-facebook-square:hover, .fa-instagram:hover{
+    color: #eed3a7;
+}
+
+.navbarLogoFoot{
+    color: #000;
+    cursor: pointer;
+}
+.logolinkFooter{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+    text-decoration: none;
+}
+
+.logolinkFooter:hover {
+    color: #000;
+  }
+
+.nameShopFooter{
+    font-family: "Righteous", cursive;
+    font-size: 3rem;
+}
+
+@media screen and (max-width:960px) {
+    .iconsContainer{
+        margin-bottom: 9rem;
+    }
+}
+
+@media screen and (max-width:600px) {
+    .footer{
+        flex-direction: column;
+    }
+    .iconsContainer{
+        margin-bottom: 0rem;
+    }
+}
+

@@ -19,19 +19,21 @@ export const CartProvider = ({ children }) => {
     }
   }
 
-  const deleteCartItemById= (id) =>{
+  const deleteCartItemById = (id) => {
     let index = cart.findIndex(elem => elem.id === id);
     const newCart = [...cart];
-    newCart.splice( index, 1 );
+    newCart.splice(index, 1);
     setCart([...newCart])
   }
 
-  const deleteCart = () =>{
+  const deleteCart = () => {
     setCart([]);
   }
 
+  const formatoNumero = new Intl.NumberFormat('en-IN', {style: "currency", currency: "USD"})
+
   return (
-    <CartContext.Provider value={{ cart, setCart, addToCart, deleteCart, deleteCartItemById }}>
+    <CartContext.Provider value={{ cart, setCart, addToCart, deleteCart, deleteCartItemById, formatoNumero}}>
       {children}
     </CartContext.Provider>
   );
