@@ -4,7 +4,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: 35vw;
+    height: 70rem;
 }
 
 .totalApagar{
@@ -68,6 +68,8 @@
         rgba(255, 185, 21, 0.863) 95%
       );
   }
+
+  
 
 @media screen and (max-width:600px) {
     .totalApagar p{
