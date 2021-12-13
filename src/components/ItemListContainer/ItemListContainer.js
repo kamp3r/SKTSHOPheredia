@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./ItemListContainer.css";
+import { collection, query, where, getDocs } from "firebase/firestore";
+import { db } from '../../firebase/firebaseConfig'
 import ItemList from "../ItemList/ItemList";
 import Spinner from "../Spinner/Spinner";
 
@@ -9,15 +11,18 @@ const ItemListContainer = ({ categoriaId }) => {
 
   useEffect(() => {
     setTimeout(() => {
-      setIsLoading(true);
-      fetch(
-        `https://61a52ad94c822c0017042124.mockapi.io/api/category/${categoriaId}/items`
-      )
-        .then((Response) => Response.json())
-        .then((data) => {
-          setItems(data);
-          setIsLoading(false);
+      const getProducts = async () => {
+        setIsLoading(true)
+        const q = query(collection(db, "products"), where("categoryId", "==", categoriaId));
+        const prods = [];
+        const queryCap = await getDocs(q);
+        queryCap.forEach((prod) => {
+          prods.push({ ...prod.data(), id: prod.id });
+          setIsLoading(false)
         });
+        setItems(prods)
+      }
+      getProducts()
     }, 2000);
   }, [categoriaId]);
 

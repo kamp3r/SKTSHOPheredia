@@ -12,7 +12,7 @@ const Item = ({ item }) => {
       <img className="cardImage" src={item.imagen} alt={item.nombre} />
       <h2 className="name">{item.nombre}</h2>
       <h3 className="price">{formatoNumero.format(item.precio)}</h3>
-      <Link className="linkVerMas" to={`/items/${item.categoryId}/${item.id}`}>
+      <Link className="linkVerMas" to={`/items/${item.id}`}>
         <button className="verMas"> Ver más</button>
       </Link>
       <h4 className="stock">Stock: {item.stock} Unidades</h4>

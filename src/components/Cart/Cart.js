@@ -9,7 +9,7 @@ const Cart = () => {
     const precioFinal = Object.values(cart).reduce((acc, { qty, precio }) => acc + qty * precio, 0)
 
     return (
-        <body className="bodyCart">
+        <div className="bodyCart">
             {cart.length ? (
                 <>
                     <CartList></CartList>
@@ -27,7 +27,7 @@ const Cart = () => {
                     </>
                 )
             }
-        </body>
+        </div>
     )
 }
 

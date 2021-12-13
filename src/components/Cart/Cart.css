@@ -4,7 +4,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 70rem;
+    min-height: 70rem;
 }
 
 .totalApagar{
@@ -14,6 +14,7 @@
     border-bottom-right-radius: 1rem;
     margin-top: -1rem;
     margin-bottom: 1rem;
+    box-shadow: 10px 10px 5px #c7be49;
 }
 
 .totalApagar p{
@@ -70,6 +71,12 @@
   }
 
   
+  @media screen and (max-width:1000px) {
+    .bodyCart{
+        height: fit-content;
+    }
+}
+
 
 @media screen and (max-width:600px) {
     .totalApagar p{

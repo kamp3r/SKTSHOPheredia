@@ -1,8 +1,11 @@
 import React from "react";
 import { CSpinner } from "@coreui/react";
+import './Spinner.css'
 
 const Spinner = () => {
-  return <CSpinner size="sm" color="warning" />;
+  return <div className="spinnerContainer"> 
+          <CSpinner size="sm" color="warning" />
+        </div>
 };
 
 export default Spinner;
