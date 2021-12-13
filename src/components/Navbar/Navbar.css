@@ -113,13 +113,14 @@ a {
 
   .nav-links {
     text-align: center;
+    width: 100%;
     padding: 2rem 2rem;
     display: table;
     margin: 0rem;
   }
 
   .nav-links:hover {
-    width: 100rem;
+    width: 100%;
     background: rgba(59, 59, 59, 0.473);
     border-radius: 0;
     color: #fafafa;

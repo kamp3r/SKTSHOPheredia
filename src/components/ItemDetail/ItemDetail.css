@@ -75,10 +75,17 @@
         flex-direction: column;
     }
     .imageDetail{
+        margin-top: 2rem;
         width: 80%;
     }
     .detailsProduct{
-        width: 80%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        width: 90%;
+        min-height: 50rem;
+        margin-bottom: 2rem;
     }
     .nombreDetail{
         font-size: 3.5rem;
