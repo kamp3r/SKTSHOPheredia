@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./ItemListContainer.css";
 import { collection, query, where, getDocs } from "firebase/firestore";
-import { db } from '../../firebase/firebaseConfig'
+import { db } from "../../firebase/firebaseConfig";
 import ItemList from "../ItemList/ItemList";
 import Spinner from "../Spinner/Spinner";
 
@@ -12,17 +12,20 @@ const ItemListContainer = ({ categoriaId }) => {
   useEffect(() => {
     setTimeout(() => {
       const getProducts = async () => {
-        setIsLoading(true)
-        const q = query(collection(db, "products"), where("categoryId", "==", categoriaId));
+        setIsLoading(true);
+        const q = query(
+          collection(db, "products"),
+          where("categoryId", "==", categoriaId)
+        );
         const prods = [];
         const queryCap = await getDocs(q);
         queryCap.forEach((prod) => {
           prods.push({ ...prod.data(), id: prod.id });
-          setIsLoading(false)
+          setIsLoading(false);
         });
-        setItems(prods)
-      }
-      getProducts()
+        setItems(prods);
+      };
+      getProducts();
     }, 2000);
   }, [categoriaId]);
 

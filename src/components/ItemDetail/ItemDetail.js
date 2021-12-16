@@ -7,18 +7,18 @@ import { CartContext } from "../CartContext/CartContext";
 
 const ItemDetail = ({ item }) => {
   const [AddCart, setAddCart] = useState(false);
-  const cartContext = useContext(CartContext)
-  const { addToCart, formatoNumero} = cartContext
+  const cartContext = useContext(CartContext);
+  const { addToCart, formatoNumero } = cartContext;
 
   const onAdd = (qty) => {
     if (qty > 0) {
-      addToCart(item, qty)
-      setAddCart(true)
+      addToCart(item, qty);
+      setAddCart(true);
     } else {
-      setAddCart(false)
+      setAddCart(false);
     }
-  }
- 
+  };
+
   return (
     <div className="detailContainer">
       <img className="imageDetail" src={item.imagen} alt={item.nombre} />
@@ -27,9 +27,9 @@ const ItemDetail = ({ item }) => {
         <h3 className="descripcionDetail">{item.descripcion}</h3>
         <h4 className="precioDetail">{formatoNumero.format(item.precio)}</h4>
         {AddCart ? (
-            <Link to="/cart">
-              <button className="toCartButton">Terminar Compra</button>
-            </Link>
+          <Link to="/cart">
+            <button className="toCartButton">Terminar Compra</button>
+          </Link>
         ) : (
           <ItemCount initial={0} stock={item.stock} onAdd={onAdd} item={item} />
         )}

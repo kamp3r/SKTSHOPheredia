@@ -1,78 +1,77 @@
-.cartList{
-    background-color: #ffff;
-    width: 90%;
-    min-height: 50%;
-    border-top-left-radius: 2rem;
-    border-top-right-radius: 2rem;
-    box-shadow: 10px 10px 5px #c7be49;
-    margin: 1rem;
-    padding: 1rem;
-    overflow: hidden;
+.cartList {
+  background-color: #ffff;
+  width: 90%;
+  min-height: 50%;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  box-shadow: 10px 10px 5px #c7be49;
+  margin: 1rem;
+  padding: 1rem;
+  overflow: hidden;
 }
 
-.headerCart{
+.headerCart {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  margin: auto;
+  align-items: center;
+}
+
+.tituloCart {
+  font-weight: bolder;
+}
+
+.eliminarCart {
+  color: #e44c4c;
+  cursor: pointer;
+  border-bottom: 1px solid #e44c4c;
+}
+
+.cartCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 1rem;
+  padding: 3rem;
+}
+
+.cartImgProd {
+  width: 15%;
+}
+
+.infoCardCart {
+  font-size: 2rem;
+}
+.cartLine::after {
+  content: "";
+  width: 90%;
+  height: 2px;
+  background-color: #363636;
+  display: block;
+  margin: 1rem auto;
+}
+
+.fa-trash-alt {
+  font-size: 3rem;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 1000px) {
+  .cartList {
+    min-height: fit-content;
+  }
+  .cartCard {
     display: flex;
-    justify-content: space-between;
-    width: 90%;
-    margin: auto;
-    align-items: center;
+    flex-direction: column;
+  }
+  .cartImgProd {
+    width: 40%;
+  }
 }
 
-.tituloCart{
-    font-weight: bolder;
-}
-
-.eliminarCart{
-    color: #E44C4C;
-    cursor: pointer;
-    border-bottom: 1px solid #E44C4C;
-}
-
-.cartCard{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 1rem;
-    padding: 3rem;
-}
-
-.cartImgProd{
-    width: 15%;
-}
-
-.infoCardCart{
-    font-size: 2rem;
-}
-.cartLine::after{
-    content: '';
-    width: 90%;
-    height: 2px;
-    background-color: #363636;
-    display: block;
-    margin: 1rem auto;
-
-}
-
-.fa-trash-alt{
-    font-size: 3rem;
-    cursor: pointer;
-}
-
-@media screen and (max-width:1000px) {
-    .cartList{
-        min-height: fit-content;
-    }
-    .cartCard{
-        display: flex;
-        flex-direction: column;
-    }
-    .cartImgProd{
-        width: 40%;
-    }
-}
-
-@media screen and (max-width: 480px){
-    .cartImgProd{
-        width: 70%;
-    }
+@media screen and (max-width: 480px) {
+  .cartImgProd {
+    width: 70%;
+  }
 }

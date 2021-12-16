@@ -8,12 +8,15 @@ const Navbar = () => {
   const [clickeado, setClickeado] = useState(false);
   const { cart } = useContext(CartContext);
 
-  const toggle = () => setClickeado(!clickeado)
+  const toggle = () => setClickeado(!clickeado);
 
   return (
     <nav className="NavbarItems">
       <h1 className="navbarLogo">
-        <Link to="/" className="logolink" ><i className="fa-brands fa-usps"></i> <span className="nameShop">SKTSHOP</span></Link>
+        <Link to="/" className="logolink">
+          <i className="fa-brands fa-usps"></i>{" "}
+          <span className="nameShop">SKTSHOP</span>
+        </Link>
       </h1>
       <div className="menuIcono" onClick={toggle}>
         <i className={clickeado ? "fas fa-times" : "fas fa-bars"}></i>
@@ -29,13 +32,13 @@ const Navbar = () => {
           Calzado
         </NavLink>
       </ul>
-      {cart.length ?
-        (
-          <Link to="/Cart"><CartWidget /></Link>
-        ) : (
-          <div></div>
-        )
-      }
+      {cart.length ? (
+        <Link to="/Cart">
+          <CartWidget />
+        </Link>
+      ) : (
+        <div></div>
+      )}
     </nav>
   );
 };

@@ -30,10 +30,14 @@ export const CartProvider = ({ children }) => {
     setCart([]);
   }
 
+  const precioFinal = () =>{
+    return cart.reduce((acc, { qty, precio }) => acc + qty * precio, 0)
+  }
+
   const formatoNumero = new Intl.NumberFormat('en-IN', {style: "currency", currency: "USD"})
 
   return (
-    <CartContext.Provider value={{ cart, setCart, addToCart, deleteCart, deleteCartItemById, formatoNumero}}>
+    <CartContext.Provider value={{ cart, setCart, addToCart, deleteCart, deleteCartItemById, formatoNumero, precioFinal}}>
       {children}
     </CartContext.Provider>
   );

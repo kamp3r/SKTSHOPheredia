@@ -4,8 +4,7 @@ import { CartContext } from "../CartContext/CartContext";
 import { Link } from "react-router-dom";
 
 const Item = ({ item }) => {
-
-  const { formatoNumero } = useContext(CartContext)
+  const { formatoNumero } = useContext(CartContext);
 
   return (
     <div className="cardProducto">
