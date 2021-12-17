@@ -17,6 +17,7 @@ export const CartProvider = ({ children }) => {
       let producto = { ...item, qty };
       setCart([...cart, producto]);
     }
+    productsInCart(cart)
   };
 
   const deleteCartItemById = (id) => {
@@ -40,12 +41,10 @@ export const CartProvider = ({ children }) => {
   });
 
  
-  const productsInCart = ()=>{
-    let productosInCart = 0;
-    cart.map((productos) => {
-      return (productosInCart = productosInCart + productos.qty);
-    });
-  }
+  const productsInCart = () => {
+    return cart.reduce((acc, { qty }) => acc + qty, 0);
+  };
+  
 
   return (
     <CartContext.Provider
