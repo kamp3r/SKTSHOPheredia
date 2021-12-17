@@ -14,9 +14,11 @@ const Cart = () => {
           <CartList />
           <div className="totalApagar">
             <p>Total a Pagar: {formatoNumero.format(precioFinal(cart))}</p>
-            <Link to="/checkout">
-              <button>Proceder al pago </button>
-            </Link>
+            <div className="buttonToPay">
+              <Link to="/checkout">
+                <button className="pasarApagar">Proceder al pago </button>
+              </Link>
+            </div>
           </div>
         </>
       ) : (

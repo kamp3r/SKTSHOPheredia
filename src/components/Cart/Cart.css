@@ -28,7 +28,7 @@
     font-size: 3rem;
 }
 
-.volverAtras{
+.volverAtras, .pasarApagar{
     background: radial-gradient(
         circle,
         rgba(245, 162, 46, 0.801) 0%,
@@ -44,7 +44,7 @@
       font-size: 2rem;
 }
 
-.volverAtras:hover {
+.volverAtras:hover, .pasarApagar:hover {
     background: radial-gradient(
       circle,
       rgba(241, 172, 76, 0.685) 0%,
@@ -53,7 +53,7 @@
     );
   }
 
-.volverAtras:active {
+.volverAtras:active, .pasarApagar:active {
     color: white;
     background: radial-gradient(
       circle,
@@ -70,6 +70,13 @@
       );
   }
 
+.pasarApagar{
+  margin-bottom: 3rem;
+  margin-left: 15rem;
+  width: 15rem;
+  height: 4rem;
+  font-size: 1.5rem;
+}
   
   @media screen and (max-width:1000px) {
     .bodyCart{
@@ -82,5 +89,14 @@
     .totalApagar p{
         text-align: center;
         padding-right: 0rem;
+    }
+    .buttonToPay{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .pasarApagar{
+      margin-top: 1rem;
+      margin-left: 0rem;
     }
 }

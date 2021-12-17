@@ -48,6 +48,71 @@ const Checkout = () => {
   const [purchaseId, setPurchaseId] = useState("");
   const [visible, setVisible] = useState(false);
   const { cart, precioFinal, deleteCart } = useContext(CartContext);
+  const [validated, setValidated] = useState(false)
+
+  const handleSubmit = (e) => {
+
+    const form = e.currentTarget
+  
+    if (form.checkValidity() === false) {
+      e.preventDefault()
+      e.stopPropagation()
+    }else{
+      e.preventDefault()
+      
+      const nuevaOrden = {
+        buyerInfo: userInfo,
+        items: cart,
+        paymentMethod: cardType,
+        cardNumber: cardNumber,
+        cardExpiration: cardExp,
+        cardCvc: cardCvc,
+        Date: Timestamp.fromDate(new Date()),
+        total: precioFinal(),
+      };
+
+      const ordenRef = collection(db, "ordenes")
+      
+      addDoc(ordenRef, nuevaOrden)
+      .then((res) => {
+        setPurchaseId(res.id)
+        });
+  
+      const stockProdRef = collection(db, "products");
+  
+      const batch = writeBatch(db);
+      const q = query(
+        stockProdRef,
+        where(
+          documentId(),
+          "in",
+          cart.map((prod) => prod.id)
+        )
+      );
+  
+      const sinStock = [];
+  
+      getDocs(q).then((res) => {
+        res.docs.forEach((doc) => {
+          const itemToUpdate = cart.find((prod) => prod.id === doc.id);
+  
+          if (doc.data().stock >= itemToUpdate.qty) {
+            batch.update(doc.ref, {
+              stock: doc.data().stock - itemToUpdate.qty,
+            });
+          } else {
+            sinStock.push(itemToUpdate);
+          }
+        });
+        if (sinStock.length === 0) {
+          batch.commit();
+        }
+      });
+      setValidated(true)
+      setVisible(!visible)
+      deleteCart();
+    }
+  }
 
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
@@ -58,61 +123,13 @@ const Checkout = () => {
     setCardType(tarjetaSeleccionada);
   };
 
-  const nuevaOrden = {
-    buyerInfo: userInfo,
-    items: cart,
-    paymentMethod: cardType,
-    cardNumber: cardNumber,
-    cardExpiration: cardExp,
-    cardCvc: cardCvc,
-    Date: Timestamp.fromDate(new Date()),
-    total: precioFinal(),
-  };
-
-  const handleFinish = async (e) => {
-    e.preventDefault();
-    const ordenRef = await addDoc(collection(db, "ordenes"), {
-      nuevaOrden,
-    });
-    setPurchaseId(ordenRef);
-    const stockProdRef = collection(db, "products");
-
-    const batch = writeBatch(db);
-    const q = query(
-      stockProdRef,
-      where(
-        documentId(),
-        "in",
-        cart.map((prod) => prod.id)
-      )
-    );
-
-    const sinStock = [];
-
-    getDocs(q).then((res) => {
-      res.docs.forEach((doc) => {
-        const itemToUpdate = cart.find((prod) => prod.id === doc.id);
-
-        if (doc.data().stock >= itemToUpdate.qty) {
-          batch.update(doc.ref, {
-            stock: doc.data().stock - itemToUpdate.qty,
-          });
-        } else {
-          sinStock.push(itemToUpdate);
-        }
-      });
-      if (sinStock.length === 0) {
-        batch.commit();
-      }
-    });
-  };
-
   return (
     <div className="checkoutContainer">
       <h2>Finaliza tu compra</h2>
       <CForm
         className="row g-3 checkout"
-        onSubmit={handleFinish}
+        validated={validated}
+        onSubmit={handleSubmit}
       >
         <p className="subDivisor">Datos Personales</p>
         <CCol md={6}>
@@ -301,6 +318,7 @@ const Checkout = () => {
               type="number"
               id="inputVencimiento"
               placeholder="Numero de Tarjeta"
+              required
               value={cardExp}
               onInput={(e) => setCardExp(e.target.value)}
             />
@@ -318,6 +336,7 @@ const Checkout = () => {
               type="password"
               id="inputCvc"
               placeholder="CVC"
+              required
               value={cardCvc}
               onInput={(e) => setCardCvc(e.target.value)}
             />
@@ -327,7 +346,7 @@ const Checkout = () => {
           </CFormFloating>
         </CCol>
         <CCol xs={12}>
-          <CButton size="lg" type="submit" onSubmit={deleteCart} onClick={() => setVisible(!visible)}>
+          <CButton color="warning" size="lg" type="submit">
             Confirmar compra
           </CButton>
         </CCol>
