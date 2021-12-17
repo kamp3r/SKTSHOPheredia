@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import "../ItemListContainerCategory/ItemListContainerCategory.css";
-import { collection, query, getDocs, orderBy} from "firebase/firestore";
+import "./ItemListContainerCategory.css";
+import { collection, query, where, getDocs } from "firebase/firestore";
 import { db } from "../../firebase/firebaseConfig";
 import ItemList from "../ItemList/ItemList";
 import Spinner from "../Spinner/Spinner";
 
-const ItemListContainer = () => {
+const ItemListContainerCategory = ({ categoriaId }) => {
   const [item, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -13,7 +13,10 @@ const ItemListContainer = () => {
     setTimeout(() => {
       const getProducts = async () => {
         setIsLoading(true);
-        const q = query(collection(db, "products"), orderBy("nombre"));
+        const q = query(
+          collection(db, "products"),
+          where("categoryId", "==", categoriaId)
+        );
         const prods = [];
         const queryCap = await getDocs(q);
         queryCap.forEach((prod) => {
@@ -24,23 +27,18 @@ const ItemListContainer = () => {
       };
       getProducts();
     }, 2000);
-  }, []);
-
-
+  }, [categoriaId]);
 
   return (
     <>
       <div className="ListContainer">
         <div className="containerElement">
-          {isLoading ? (
-            <Spinner />
-          ) : (
-             <ItemList items={item} />
-          )}
+          <h1 className="categoryTitleR">{categoriaId}</h1>
+          {isLoading ? <Spinner /> : <ItemList items={item} />}
         </div>
       </div>
     </>
   );
 };
 
-export default ItemListContainer;
+export default ItemListContainerCategory;

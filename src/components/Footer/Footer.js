@@ -13,11 +13,14 @@ const Footer = () => {
         <Link to="/" onClick={toggle} className="footLinks">
           Home
         </Link>
-        <Link to="/category/Skate" onClick={toggle} className="footLinks">
+        <Link to="/category/Skates" onClick={toggle} className="footLinks">
           Skates
         </Link>
-        <Link to="/category/Calzado" onClick={toggle} className="footLinks">
-          Calzado
+        <Link to="/category/Rollers" onClick={toggle} className="footLinks">
+          Rollers
+        </Link>
+        <Link to="/category/BMX" onClick={toggle} className="footLinks">
+          BMX
         </Link>
       </ul>
       <ul className="footerLinkContainer">

@@ -1,13 +1,13 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import ItemListContainer from "../ItemListContainer/ItemListContainer";
+import ItemListContainerCategory from "../ItemListContainerCategory/ItemListContainerCategory";
 
 const Category = () => {
   const params = useParams();
 
   return (
     <div>
-      <ItemListContainer categoriaId={params.categoryId} />
+      <ItemListContainerCategory categoriaId={params.categoryId} />
     </div>
   );
 };

@@ -44,7 +44,7 @@
 .iconsContainer{
     display: flex;
     justify-content: center;
-    margin-bottom: 9rem;
+    margin-bottom: 14rem;
 }
 .fa-instagram, .fa-facebook-square{
     font-size: 3rem;

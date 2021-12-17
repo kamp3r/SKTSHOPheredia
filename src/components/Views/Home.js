@@ -1,14 +1,12 @@
 import React from "react";
-import ItemListContainer from "../ItemListContainer/ItemListContainer";
+import ItemListContainer from "../ItemListContainer/ItemListContainer"
 import Carrousel from "../Carrousel/Carrousel";
 
 const Home = () => {
   return (
     <div>
       <Carrousel />
-      <ItemListContainer categoriaId="Skates" />
-      <ItemListContainer categoriaId="Rollers" />
-      <ItemListContainer categoriaId="BMX" />
+      <ItemListContainer/>
     </div>
   );
 };
