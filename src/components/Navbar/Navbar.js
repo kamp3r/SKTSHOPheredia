@@ -25,11 +25,14 @@ const Navbar = () => {
         <NavLink to="/" onClick={toggle} className="nav-links">
           Home
         </NavLink>
-        <NavLink to="/category/Skate" onClick={toggle} className="nav-links">
+        <NavLink to="/category/Skates" onClick={toggle} className="nav-links">
           Skates
         </NavLink>
-        <NavLink to="/category/Calzado" onClick={toggle} className="nav-links">
-          Calzado
+        <NavLink to="/category/Rollers" onClick={toggle} className="nav-links">
+          Rollers
+        </NavLink>
+        <NavLink to="/category/BMX" onClick={toggle} className="nav-links">
+          BMX
         </NavLink>
       </ul>
       {cart.length ? (
@@ -37,7 +40,7 @@ const Navbar = () => {
           <CartWidget />
         </Link>
       ) : (
-        <></>
+        <div></div>
       )}
     </nav>
   );

@@ -30,7 +30,7 @@ const ItemDetailContainer = () => {
 
   return (
     <div className="itemDetail">
-      {isLoading ? <Spinner /> : <ItemDetail item={item} />}
+      {isLoading ? <Spinner/> : <ItemDetail item={item} />}
     </div>
   );
 };

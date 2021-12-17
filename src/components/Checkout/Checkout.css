@@ -5,6 +5,7 @@
   flex-direction: column;
   width: 100%;
   background-color: #faf1bb;
+  min-height: 72vh;
 }
 
 .checkout {

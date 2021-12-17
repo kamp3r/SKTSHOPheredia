@@ -1,4 +1,11 @@
 .ListContainer{
     text-align: center;
-    font-size: 10rem;
+    min-height: 50vw;
+}
+.categoryTitleR{
+    font-size: 3.5rem;
+    width: 100%;
+    background-color: black;
+    color: #fafafa;
+    padding: 1rem;
 }

@@ -119,12 +119,6 @@ a {
     margin: 0rem;
   }
 
-  .nav-links:hover {
-    width: 100%;
-    background: rgba(59, 59, 59, 0.473);
-    border-radius: 0;
-    color: #fafafa;
-  }
 
   .navbarLogo {
     position: absolute;

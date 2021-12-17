@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import {
   CForm,
   CFormLabel,
@@ -28,6 +28,7 @@ import {
   documentId,
   query,
 } from "firebase/firestore";
+import Spinner from "../Spinner/Spinner";
 
 const initialValues = {
   nombre: "",
@@ -49,6 +50,15 @@ const Checkout = () => {
   const [visible, setVisible] = useState(false);
   const { cart, precioFinal, deleteCart } = useContext(CartContext);
   const [validated, setValidated] = useState(false)
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    if (isLoading){
+      setTimeout(() =>{
+        setIsLoading(false)
+      }, 1000)
+    }
+  }, [isLoading])
 
   const handleSubmit = (e) => {
 
@@ -126,6 +136,7 @@ const Checkout = () => {
   return (
     <div className="checkoutContainer">
       <h2>Finaliza tu compra</h2>
+      {isLoading ? <Spinner /> : <>
       <CForm
         className="row g-3 checkout"
         validated={validated}
@@ -142,6 +153,7 @@ const Checkout = () => {
               required
               onChange={onChangeHandler}
               value={userInfo.nombre}
+              maxLength="20"
             />
             <CFormLabel className="col-form-label-lg" htmlFor="inputNombre">
               Nombre
@@ -158,6 +170,7 @@ const Checkout = () => {
               onChange={onChangeHandler}
               name="apellido"
               value={userInfo.apellido}
+              maxLength="20"
             />
             <CFormLabel className="col-form-label-lg" htmlFor="inputApellido">
               Apellido
@@ -174,6 +187,7 @@ const Checkout = () => {
               onChange={onChangeHandler}
               name="email"
               value={userInfo.email}
+              maxLength="25"
             />
             <CFormLabel className="col-form-label-lg" htmlFor="inputEmail">
               Email
@@ -190,6 +204,7 @@ const Checkout = () => {
               onChange={onChangeHandler}
               name="direccion"
               value={userInfo.direccion}
+              maxLength="30"
             />
             <CFormLabel className="col-form-label-lg" htmlFor="inputDireccion">
               Direccion completa y entrecalles
@@ -206,6 +221,7 @@ const Checkout = () => {
               onChange={onChangeHandler}
               name="ciudad"
               value={userInfo.ciudad}
+              maxLength="20"
             />
             <CFormLabel className="col-form-label-lg" htmlFor="inputCiudad">
               Ciudad
@@ -215,12 +231,14 @@ const Checkout = () => {
         <CCol md={4}>
           <CFormFloating>
             <CFormInput
+              type="number"
               id="inputCodigo"
               placeholder="Codigo Postal"
               required
               onChange={onChangeHandler}
               name="cp"
               value={userInfo.cp}
+              maxLength="4"
             />
             <CFormLabel htmlFor="inputCodigo" className="col-form-label-lg">
               Codigo Postal
@@ -306,6 +324,7 @@ const Checkout = () => {
               required
               value={cardNumber}
               onInput={(e) => setCardNumber(e.target.value)}
+              maxLength="16"
             />
             <CFormLabel className="col-form-label-lg" htmlFor="inputTarjNum">
               Numero de Tarjeta
@@ -317,10 +336,11 @@ const Checkout = () => {
             <CFormInput
               type="number"
               id="inputVencimiento"
-              placeholder="Numero de Tarjeta"
+              placeholder="Numero de Vencimiento"
               required
               value={cardExp}
               onInput={(e) => setCardExp(e.target.value)}
+              maxLength="4"
             />
             <CFormLabel
               className="col-form-label-lg"
@@ -331,7 +351,7 @@ const Checkout = () => {
           </CFormFloating>
         </CCol>
         <CCol md={3}>
-          <CFormFloating className="responsive">
+          <CFormFloating>
             <CFormInput
               type="password"
               id="inputCvc"
@@ -339,6 +359,7 @@ const Checkout = () => {
               required
               value={cardCvc}
               onInput={(e) => setCardCvc(e.target.value)}
+              maxLength="3"
             />
             <CFormLabel className="col-form-label-lg" htmlFor="inputCvc">
               CVC
@@ -370,6 +391,8 @@ const Checkout = () => {
             </CModalFooter>
           </CModal>
       </>
+    </>
+    }
     </div>
   );
 };

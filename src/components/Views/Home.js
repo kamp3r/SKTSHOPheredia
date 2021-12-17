@@ -6,8 +6,9 @@ const Home = () => {
   return (
     <div>
       <Carrousel />
-      <ItemListContainer categoriaId="Skate" />
-      <ItemListContainer categoriaId="Calzado" />
+      <ItemListContainer categoriaId="Skates" />
+      <ItemListContainer categoriaId="Rollers" />
+      <ItemListContainer categoriaId="BMX" />
     </div>
   );
 };
