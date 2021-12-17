@@ -4,6 +4,7 @@ import Header from "./components/Header/Header";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer";
 import Home from "./components/Views/Home";
+import ErrorView from "./components/Views/ErrorView";
 import Category from "./components/Views/Category";
 import Cart from "./components/Cart/Cart";
 import { CartProvider } from "./components/CartContext/CartContext";
@@ -24,6 +25,7 @@ function App() {
           />
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<CheckoutView />} />
+          <Route path="*" element={<ErrorView />} />
         </Routes>
         <Footer />
       </Router>

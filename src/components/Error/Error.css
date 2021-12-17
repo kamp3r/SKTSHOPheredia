@@ -1,0 +1,37 @@
+.errorMessageContainer{
+    background-color: #f8f3d9;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 70rem;
+}
+
+.error{
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 3rem;
+    background-color: #ec5146;
+    width: 40%;
+    height: 30rem;
+    border-radius: 1rem;
+    box-shadow: 10px 10px 5px #ca8574;
+    padding: 3rem;
+}
+
+@media screen and (max-width:960px) {
+    .error{
+        width: 60%;
+    }
+}
+
+@media screen and (max-width:650px) {
+    .error{
+        width: 80%;
+        height: 40rem;
+    }
+}
