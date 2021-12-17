@@ -241,12 +241,12 @@ const Checkout = () => {
                   type="text"
                   id="inputCodigo"
                   placeholder="Codigo Postal"
-                  required
                   onChange={onChangeHandler}
                   name="cp"
                   value={userInfo.cp}
-                  pattern="[0-9]"
-                  maxLength="4"
+                  maxLength={4}
+                  pattern="[0-9]{4}"
+                  required
                 />
                 <CFormLabel htmlFor="inputCodigo" className="col-form-label-lg">
                   Codigo Postal
@@ -332,7 +332,7 @@ const Checkout = () => {
                   required
                   value={cardNumber}
                   onInput={(e) => setCardNumber(e.target.value)}
-                  pattern="[0-9]"
+                  pattern="[0-9]{16}"
                   maxLength="16"
                 />
                 <CFormLabel
@@ -352,7 +352,7 @@ const Checkout = () => {
                   required
                   value={cardExp}
                   onInput={(e) => setCardExp(e.target.value)}
-                  pattern="[0-9]"
+                  pattern="[0-9]{4}"
                   maxLength="4"
                 />
                 <CFormLabel
@@ -372,7 +372,7 @@ const Checkout = () => {
                   required
                   value={cardCvc}
                   onInput={(e) => setCardCvc(e.target.value)}
-                  pattern="[0-9]"
+                  pattern="[0-9]{3}"
                   maxLength="3"
                 />
                 <CFormLabel className="col-form-label-lg" htmlFor="inputCvc">
