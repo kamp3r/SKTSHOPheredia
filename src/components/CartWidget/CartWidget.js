@@ -4,18 +4,13 @@ import { CBadge } from "@coreui/react";
 import { CartContext } from "../CartContext/CartContext";
 
 const CartWidget = () => {
-  const { cart } = useContext(CartContext);
-  let productosInCart = 0;
-
-  cart.map((productos) => {
-    return (productosInCart = productosInCart + productos.qty);
-  });
+  const { productsInCart } = useContext(CartContext);
 
   return (
     <div className="contenedorCart">
       <i className="fas fa-shopping-cart">
         <CBadge className="badbge" color="danger" shape="rounded-pill">
-          {productosInCart}
+          {productsInCart()}
         </CBadge>
       </i>
     </div>

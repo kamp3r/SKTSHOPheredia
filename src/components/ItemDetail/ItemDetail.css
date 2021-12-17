@@ -1,107 +1,117 @@
-.itemDetail{
-    background-color: #f8f3d9;
+.itemDetail {
+  background-color: #f8f3d9;
 }
-.detailContainer{
+.detailContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 80%;
+  margin: 0 auto;
+  min-height: 72vh;
+  background-color: #f8f3d9;
+}
+
+.imageDetail {
+  width: 40%;
+  border-radius: 4rem;
+}
+
+.detailsProduct {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 40%;
+  color: black;
+  min-height: 68rem;
+}
+.nombreDetail {
+  font-size: 4rem;
+  font-family: "Raleway", sans-serif;
+  font-weight: 300;
+  letter-spacing: 0.2px;
+  margin-bottom: 5rem;
+}
+.descripcionDetail {
+  font-size: 3;
+  font-family: "Raleway", sans-serif;
+  font-weight: 400;
+  margin-bottom: 5rem;
+}
+.precioDetail {
+  font-size: 2.5rem;
+  color: #000;
+  font-family: "Raleway", sans-serif;
+  font-weight: 500;
+  margin-bottom: 5rem;
+}
+
+.stockDisponible {
+  font-family: "Raleway", sans-serif;
+}
+
+.toCartButton {
+  background: radial-gradient(
+    circle,
+    rgba(245, 162, 46, 0.801) 0%,
+    rgba(243, 207, 117, 0.904) 0%,
+    rgba(255, 185, 21, 0.863) 95%
+  );
+  color: #000000;
+  border: none;
+  cursor: pointer;
+  margin-top: 1rem;
+  height: 6rem;
+  width: 25rem;
+  font-size: 2rem;
+  border-radius: 1rem;
+}
+
+.borrarElemento {
+  background: radial-gradient(
+    circle,
+    rgba(245, 162, 46, 0.801) 0%,
+    rgba(243, 207, 117, 0.904) 0%,
+    rgba(255, 185, 21, 0.863) 95%
+  );
+  color: #000000;
+  border: none;
+  cursor: pointer;
+  margin-top: 1rem;
+  height: 6rem;
+  width: 25rem;
+  font-size: 2rem;
+  border-radius: 1rem;
+}
+
+@media screen and (max-width: 960px) {
+  .detailContainer {
     display: flex;
-    align-items: center;
-    justify-content: space-around;
+    flex-direction: column;
+  }
+  .imageDetail {
+    margin-top: 2rem;
     width: 80%;
-    margin: 0 auto;
-    min-height: 72vh;
-    background-color: #f8f3d9;
-}
-
-.imageDetail{
-    width: 40%;
-    border-radius: 4rem;
-}
-
-.detailsProduct{
+  }
+  .detailsProduct {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    width: 40%;
-    color: black;
-    min-height: 68rem;
-}
-.nombreDetail{
-    font-size: 4rem;
-    font-family: 'Raleway', sans-serif;
-    font-weight: 300;
-    letter-spacing: .2px;
-    margin-bottom: 5rem;
-}
-.descripcionDetail{
-    font-size: 3;
-    font-family: 'Raleway', sans-serif;
-    font-weight: 400;
-    margin-bottom: 5rem;
-}
-.precioDetail{
-    font-size: 2.5rem;
-    color: #000;
-    font-family: 'Raleway', sans-serif;
-    font-weight: 500;
-    margin-bottom: 5rem;
-}
-
-.stockDisponible{
-    font-family: 'Raleway', sans-serif;
-}
-
-.toCartButton{
-    background: radial-gradient(circle, rgba(245, 162, 46, 0.801) 0%, rgba(243, 207, 117, 0.904) 0%, rgba(255, 185, 21, 0.863) 95%);
-    color: #000000;
-    border: none;
-    cursor: pointer;
-    margin-top: 1rem;
-    height: 6rem;
-    width: 25rem;
-    font-size: 2rem;
-    border-radius: 1rem;
-}
-
-.borrarElemento{
-    background: radial-gradient(circle, rgba(245, 162, 46, 0.801) 0%, rgba(243, 207, 117, 0.904) 0%, rgba(255, 185, 21, 0.863) 95%);
-    color: #000000;
-    border: none;
-    cursor: pointer;
-    margin-top: 1rem;
-    height: 6rem;
-    width: 25rem;
-    font-size: 2rem;
-    border-radius: 1rem;
-}
-
-@media screen and (max-width: 960px){
-    .detailContainer{
-        display: flex;
-        flex-direction: column;
-    }
-    .imageDetail{
-        margin-top: 2rem;
-        width: 80%;
-    }
-    .detailsProduct{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-        width: 90%;
-        min-height: 50rem;
-        margin-bottom: 2rem;
-    }
-    .nombreDetail{
-        font-size: 3.5rem;
-        margin: 2rem 0;
-    }
-    .descripcionDetail{
-        font-size: 3.5;
-        margin: 2rem 0;
-    }
-    .precioDetail{
-        font-size: 3rem;
-        margin: 2rem 0;
-    }
+    justify-content: flex-start;
+    width: 90%;
+    min-height: 50rem;
+    margin-bottom: 2rem;
+  }
+  .nombreDetail {
+    font-size: 3.5rem;
+    margin: 2rem 0;
+  }
+  .descripcionDetail {
+    font-size: 3.5;
+    margin: 2rem 0;
+  }
+  .precioDetail {
+    font-size: 3rem;
+    margin: 2rem 0;
+  }
 }

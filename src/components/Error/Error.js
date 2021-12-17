@@ -1,15 +1,15 @@
-import React from 'react'
-import './Error.css'
+import React from "react";
+import "./Error.css";
 
 const Error = () => {
-    return (
-        <div className='errorMessageContainer'>
-            <div className='error'>
-                <p>ERROR 404</p>
-                <p>Lo sentimos, esta pagina no existe</p>
-            </div>
-        </div>
-    )
-}
+  return (
+    <div className="errorMessageContainer">
+      <div className="error">
+        <p>ERROR 404</p>
+        <p>Lo sentimos, esta pagina no existe</p>
+      </div>
+    </div>
+  );
+};
 
-export default Error
+export default Error;

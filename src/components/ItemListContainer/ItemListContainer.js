@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../ItemListContainerCategory/ItemListContainerCategory.css";
-import { collection, query, getDocs, orderBy} from "firebase/firestore";
+import { collection, query, getDocs, orderBy } from "firebase/firestore";
 import { db } from "../../firebase/firebaseConfig";
 import ItemList from "../ItemList/ItemList";
 import Spinner from "../Spinner/Spinner";
@@ -26,17 +26,11 @@ const ItemListContainer = () => {
     }, 2000);
   }, []);
 
-
-
   return (
     <>
       <div className="ListContainer">
         <div className="containerElement">
-          {isLoading ? (
-            <Spinner />
-          ) : (
-             <ItemList items={item} />
-          )}
+          {isLoading ? <Spinner /> : <ItemList items={item} />}
         </div>
       </div>
     </>
