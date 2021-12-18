@@ -54,7 +54,7 @@ option {
 
 .fa-cc-visa,
 .fa-cc-mastercard,
-.fa-cc-amex {
+.fa-cc-amex, .fa-money-bill-wave-alt {
   font-size: 4rem;
 }
 

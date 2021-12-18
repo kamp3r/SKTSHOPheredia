@@ -13,6 +13,7 @@ import {
   CModalTitle,
   CModalBody,
   CModalFooter,
+  CAlert 
 } from "@coreui/react";
 import "./Checkout.css";
 import { Link } from "react-router-dom";
@@ -48,7 +49,7 @@ const Checkout = () => {
   const [cardCvc, setCardCvc] = useState("");
   const [purchaseId, setPurchaseId] = useState("");
   const [visible, setVisible] = useState(false);
-  const { cart, precioFinal, deleteCart } = useContext(CartContext);
+  const { cart, precioFinal, deleteCart, formatoNumero } = useContext(CartContext);
   const [validated, setValidated] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -76,7 +77,7 @@ const Checkout = () => {
         cardExpiration: cardExp,
         cardCvc: cardCvc,
         Date: Timestamp.fromDate(new Date()),
-        total: precioFinal(),
+        total: cardType === 'money' ? (precioFinal() - (precioFinal() * 0.15 ) ) : precioFinal(),
       };
 
       const ordenRef = collection(db, "ordenes");
@@ -290,7 +291,7 @@ const Checkout = () => {
               </CFormSelect>
             </CCol>
 
-            <p className="subDivisor">Tarjeta de Credito</p>
+            <p className="subDivisor">Metodo de Pago</p>
 
             <CCol xs={12} className="containerCards">
               <div className="tarjeta">
@@ -323,8 +324,18 @@ const Checkout = () => {
                   onClick={() => onSelectPay("american")}
                 />
               </div>
+              <div className="tarjeta">
+                <i class="fas fa-money-bill-wave-alt"></i>
+                <CFormCheck
+                  type="radio"
+                  name="tarjeta"
+                  id="money"
+                  required
+                  onClick={() => onSelectPay("money")}
+                />
+              </div>
             </CCol>
-            <CCol md={6}>
+            {cardType === 'money' ? <><CAlert color="warning">Tu pago por transferencia tiene un total de {formatoNumero.format(precioFinal() - (precioFinal() * 0.15 ))}, recorda que tiene un 15% de descuento </CAlert></> : <><CCol md={6}>
               <CFormFloating>
                 <CFormInput
                   type="text"
@@ -381,6 +392,7 @@ const Checkout = () => {
                 </CFormLabel>
               </CFormFloating>
             </CCol>
+            </>}
             <CCol xs={12}>
               <CButton color="warning" size="lg" type="submit">
                 Confirmar compra
