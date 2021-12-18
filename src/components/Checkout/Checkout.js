@@ -13,6 +13,7 @@ import {
   CModalTitle,
   CModalBody,
   CModalFooter,
+  CFormFeedback,
 } from "@coreui/react";
 import "./Checkout.css";
 import { Link } from "react-router-dom";
@@ -66,7 +67,8 @@ const Checkout = () => {
     if (form.checkValidity() === false) {
       e.preventDefault();
       e.stopPropagation();
-    } else {
+    } 
+    if (form.checkValidity() === true) {
       e.preventDefault();
 
       const nuevaOrden = {
@@ -251,6 +253,7 @@ const Checkout = () => {
                 <CFormLabel htmlFor="inputCodigo" className="col-form-label-lg">
                   Codigo Postal
                 </CFormLabel>
+                <CFormFeedback valid>Valor Correcto</CFormFeedback>
               </CFormFloating>
             </CCol>
             <CCol md={12}>
