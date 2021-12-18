@@ -13,7 +13,6 @@ import {
   CModalTitle,
   CModalBody,
   CModalFooter,
-  CFormFeedback,
 } from "@coreui/react";
 import "./Checkout.css";
 import { Link } from "react-router-dom";
@@ -63,14 +62,12 @@ const Checkout = () => {
 
   const handleSubmit = (e) => {
     const form = e.currentTarget;
-
     if (form.checkValidity() === false) {
       e.preventDefault();
       e.stopPropagation();
-    } 
-    if (form.checkValidity() === true) {
+    } else{
       e.preventDefault();
-
+      setValidated(true);
       const nuevaOrden = {
         buyerInfo: userInfo,
         items: cart,
@@ -118,10 +115,11 @@ const Checkout = () => {
           batch.commit();
         }
       });
-      setValidated(true);
+
       setVisible(!visible);
       deleteCart();
     }
+
   };
 
   const onChangeHandler = (e) => {
@@ -149,11 +147,11 @@ const Checkout = () => {
             <CCol md={6}>
               <CFormFloating>
                 <CFormInput
+                  required
                   type="text"
                   id="inputNombre"
                   name="nombre"
                   placeholder="Nombre"
-                  required
                   onChange={onChangeHandler}
                   value={userInfo.nombre}
                   maxLength="20"
@@ -253,7 +251,6 @@ const Checkout = () => {
                 <CFormLabel htmlFor="inputCodigo" className="col-form-label-lg">
                   Codigo Postal
                 </CFormLabel>
-                <CFormFeedback valid>Valor Correcto</CFormFeedback>
               </CFormFloating>
             </CCol>
             <CCol md={12}>
@@ -265,6 +262,7 @@ const Checkout = () => {
                 onChange={onChangeHandler}
                 value={userInfo.provincia}
               >
+                <option value="" selected>--Elegi tu Provincia--</option>
                 <option value="Buenos Aires">Buenos Aires</option>
                 <option value="Catamarca">Catamarca</option>
                 <option value="Chaco">Chaco</option>
