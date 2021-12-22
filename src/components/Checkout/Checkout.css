@@ -20,6 +20,10 @@
   font-size: 2rem;
 }
 
+.modal-header .btn-close{
+  display: none;
+}
+
 .form-control:not(:placeholder-shown) {
   font-size: 1.7rem;
 }

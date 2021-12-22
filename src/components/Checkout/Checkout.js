@@ -13,7 +13,7 @@ import {
   CModalTitle,
   CModalBody,
   CModalFooter,
-  CAlert 
+  CAlert,
 } from "@coreui/react";
 import "./Checkout.css";
 import { Link } from "react-router-dom";
@@ -49,7 +49,8 @@ const Checkout = () => {
   const [cardCvc, setCardCvc] = useState("");
   const [purchaseId, setPurchaseId] = useState("");
   const [visible, setVisible] = useState(false);
-  const { cart, precioFinal, deleteCart, formatoNumero } = useContext(CartContext);
+  const { cart, precioFinal, deleteCart, formatoNumero } =
+    useContext(CartContext);
   const [validated, setValidated] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -66,7 +67,7 @@ const Checkout = () => {
     if (form.checkValidity() === false) {
       e.preventDefault();
       e.stopPropagation();
-    } else{
+    } else {
       e.preventDefault();
       setValidated(true);
       const nuevaOrden = {
@@ -77,11 +78,13 @@ const Checkout = () => {
         cardExpiration: cardExp,
         cardCvc: cardCvc,
         Date: Timestamp.fromDate(new Date()),
-        total: cardType === 'money' ? (precioFinal() - (precioFinal() * 0.15 ) ) : precioFinal(),
+        total:
+          cardType === "money"
+            ? precioFinal() - precioFinal() * 0.15
+            : precioFinal(),
       };
 
       const ordenRef = collection(db, "ordenes");
-
       addDoc(ordenRef, nuevaOrden).then((res) => {
         setPurchaseId(res.id);
       });
@@ -120,7 +123,6 @@ const Checkout = () => {
       setVisible(!visible);
       deleteCart();
     }
-
   };
 
   const onChangeHandler = (e) => {
@@ -192,7 +194,7 @@ const Checkout = () => {
                   onChange={onChangeHandler}
                   name="email"
                   value={userInfo.email}
-                  maxLength="25"
+                  maxLength="60"
                 />
                 <CFormLabel className="col-form-label-lg" htmlFor="inputEmail">
                   Email
@@ -209,13 +211,13 @@ const Checkout = () => {
                   onChange={onChangeHandler}
                   name="direccion"
                   value={userInfo.direccion}
-                  maxLength="30"
+                  maxLength="35"
                 />
                 <CFormLabel
                   className="col-form-label-lg"
                   htmlFor="inputDireccion"
                 >
-                  Direccion completa y entrecalles
+                  Direccion
                 </CFormLabel>
               </CFormFloating>
             </CCol>
@@ -263,7 +265,7 @@ const Checkout = () => {
                 onChange={onChangeHandler}
                 value={userInfo.provincia}
               >
-                <option value="" selected>--Elegi tu Provincia--</option>
+                <option value="">--Elegi tu Provincia--</option>
                 <option value="Buenos Aires">Buenos Aires</option>
                 <option value="Catamarca">Catamarca</option>
                 <option value="Chaco">Chaco</option>
@@ -325,7 +327,7 @@ const Checkout = () => {
                 />
               </div>
               <div className="tarjeta">
-                <i class="fas fa-money-bill-wave-alt"></i>
+                <i className="fas fa-money-bill-wave-alt"></i>
                 <CFormCheck
                   type="radio"
                   name="tarjeta"
@@ -335,64 +337,78 @@ const Checkout = () => {
                 />
               </div>
             </CCol>
-            {cardType === 'money' ? <><CAlert color="warning">Tu pago por transferencia tiene un total de {formatoNumero.format(precioFinal() - (precioFinal() * 0.15 ))}, recorda que tiene un 15% de descuento </CAlert></> : <><CCol md={6}>
-              <CFormFloating>
-                <CFormInput
-                  type="text"
-                  id="inputTarjNum"
-                  placeholder="Numero de Tarjeta"
-                  required
-                  value={cardNumber}
-                  onInput={(e) => setCardNumber(e.target.value)}
-                  pattern="[0-9]{16}"
-                  maxLength="16"
-                />
-                <CFormLabel
-                  className="col-form-label-lg"
-                  htmlFor="inputTarjNum"
-                >
-                  Numero de Tarjeta
-                </CFormLabel>
-              </CFormFloating>
-            </CCol>
-            <CCol md={3}>
-              <CFormFloating>
-                <CFormInput
-                  type="text"
-                  id="inputVencimiento"
-                  placeholder="Numero de Vencimiento"
-                  required
-                  value={cardExp}
-                  onInput={(e) => setCardExp(e.target.value)}
-                  pattern="[0-9]{4}"
-                  maxLength="4"
-                />
-                <CFormLabel
-                  className="col-form-label-lg"
-                  htmlFor="inputVencimiento"
-                >
-                  Vencimiento
-                </CFormLabel>
-              </CFormFloating>
-            </CCol>
-            <CCol md={3}>
-              <CFormFloating>
-                <CFormInput
-                  type="password"
-                  id="inputCvc"
-                  placeholder="CVC"
-                  required
-                  value={cardCvc}
-                  onInput={(e) => setCardCvc(e.target.value)}
-                  pattern="[0-9]{3}"
-                  maxLength="3"
-                />
-                <CFormLabel className="col-form-label-lg" htmlFor="inputCvc">
-                  CVC
-                </CFormLabel>
-              </CFormFloating>
-            </CCol>
-            </>}
+            {cardType === "money" ? (
+              <>
+                <CAlert color="warning">
+                  Tu pago por transferencia tiene un total de{" "}
+                  {formatoNumero.format(precioFinal() - precioFinal() * 0.15)},
+                  recorda que tiene un 15% de descuento{" "}
+                </CAlert>
+              </>
+            ) : (
+              <>
+                <CCol md={6}>
+                  <CFormFloating>
+                    <CFormInput
+                      type="text"
+                      id="inputTarjNum"
+                      placeholder="Numero de Tarjeta"
+                      required
+                      value={cardNumber}
+                      onInput={(e) => setCardNumber(e.target.value)}
+                      pattern="[0-9]{16}"
+                      maxLength="16"
+                    />
+                    <CFormLabel
+                      className="col-form-label-lg"
+                      htmlFor="inputTarjNum"
+                    >
+                      Numero de Tarjeta
+                    </CFormLabel>
+                  </CFormFloating>
+                </CCol>
+                <CCol md={3}>
+                  <CFormFloating>
+                    <CFormInput
+                      type="text"
+                      id="inputVencimiento"
+                      placeholder="Numero de Vencimiento"
+                      required
+                      value={cardExp}
+                      onInput={(e) => setCardExp(e.target.value)}
+                      pattern="[0-9]{4}"
+                      maxLength="4"
+                    />
+                    <CFormLabel
+                      className="col-form-label-lg"
+                      htmlFor="inputVencimiento"
+                    >
+                      Vencimiento
+                    </CFormLabel>
+                  </CFormFloating>
+                </CCol>
+                <CCol md={3}>
+                  <CFormFloating>
+                    <CFormInput
+                      type="password"
+                      id="inputCvc"
+                      placeholder="CVC"
+                      required
+                      value={cardCvc}
+                      onInput={(e) => setCardCvc(e.target.value)}
+                      pattern="[0-9]{3}"
+                      maxLength="3"
+                    />
+                    <CFormLabel
+                      className="col-form-label-lg"
+                      htmlFor="inputCvc"
+                    >
+                      CVC
+                    </CFormLabel>
+                  </CFormFloating>
+                </CCol>
+              </>
+            )}
             <CCol xs={12}>
               <CButton color="warning" size="lg" type="submit">
                 Confirmar compra
@@ -414,7 +430,11 @@ const Checkout = () => {
 
               <CModalFooter>
                 <Link to="/">
-                  <CButton color="secondary" onClick={() => setVisible(false)}>
+                  <CButton
+                    color="warning"
+                    size="lg"
+                    onClick={() => setVisible(false)}
+                  >
                     Volver al inicio
                   </CButton>
                 </Link>

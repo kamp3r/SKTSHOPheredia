@@ -3,10 +3,12 @@ import CartWidget from "../CartWidget/CartWidget";
 import { CartContext } from "../CartContext/CartContext";
 import { Link, NavLink } from "react-router-dom";
 import "./Navbar.css";
+import { UserContext } from "../UserContext/UserContext";
 
 const Navbar = () => {
   const [clickeado, setClickeado] = useState(false);
   const { cart } = useContext(CartContext);
+  const { usuarioGlobal } = useContext(UserContext);
 
   const toggle = () => setClickeado(!clickeado);
 
@@ -33,6 +35,9 @@ const Navbar = () => {
         </NavLink>
         <NavLink to="/category/BMX" onClick={toggle} className="nav-links">
           BMX
+        </NavLink>
+        <NavLink to="/miCuenta" onClick={toggle} className="nav-links">
+          {usuarioGlobal ? "Mi cuenta" : "Iniciar Sesion"}
         </NavLink>
       </ul>
       {cart.length ? (

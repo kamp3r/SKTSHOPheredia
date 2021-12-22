@@ -10,23 +10,28 @@ import Cart from "./components/Cart/Cart";
 import { CartProvider } from "./components/CartContext/CartContext";
 import Footer from "./components/Footer/Footer";
 import CheckoutView from "./components/Views/CheckoutView";
+import MyAcc from "./components/Views/MyAcc";
+import { UserProvider } from "./components/UserContext/UserContext";
 
 function App() {
   return (
-    <CartProvider>
-      <Router>
-        <Header />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/category/:categoryId" element={<Category />} />
-          <Route path="/items/:id" element={<ItemDetailContainer />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/checkout" element={<CheckoutView />} />
-          <Route path="*" element={<ErrorView />} />
-        </Routes>
-        <Footer />
-      </Router>
-    </CartProvider>
+    <UserProvider>
+      <CartProvider>
+        <Router>
+          <Header />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/category/:categoryId" element={<Category />} />
+            <Route path="/items/:id" element={<ItemDetailContainer />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/checkout" element={<CheckoutView />} />
+            <Route path="/miCuenta" element={<MyAcc />}></Route>
+            <Route path="*" element={<ErrorView />} />
+          </Routes>
+          <Footer />
+        </Router>
+      </CartProvider>
+    </UserProvider>
   );
 }
 

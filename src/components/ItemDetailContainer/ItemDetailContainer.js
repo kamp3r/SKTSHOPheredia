@@ -5,9 +5,11 @@ import { db } from "../../firebase/firebaseConfig";
 import { doc, getDoc } from "firebase/firestore";
 import "./ItemDetailContainer.css";
 import Spinner from "../Spinner/Spinner";
+import Error from "../Error/Error";
 
 const ItemDetailContainer = () => {
   const [item, setItem] = useState([]);
+  const [found, setFound] = useState()
   let { id } = useParams();
   const [isLoading, setIsLoading] = useState(true);
 
@@ -16,12 +18,14 @@ const ItemDetailContainer = () => {
       const getProducts = async () => {
         setIsLoading(true);
         const prodQ = doc(db, "products", id);
-        const prodCapt = await getDoc(prodQ);
+        const prodCapt = await getDoc(prodQ)
         if (prodCapt.exists()) {
           setItem({ ...prodCapt.data(), id: id });
           setIsLoading(false);
+          setFound(true)
         } else {
-          console.log("No se encontro el producto");
+          setIsLoading(false)
+          setFound(false)
         }
       };
       getProducts();
@@ -30,7 +34,7 @@ const ItemDetailContainer = () => {
 
   return (
     <div className="itemDetail">
-      {isLoading ? <Spinner/> : <ItemDetail item={item} />}
+      {isLoading ? <Spinner/> : (found ? <ItemDetail item={item} /> : <Error msg={'El producto no existe'}/>)}
     </div>
   );
 };

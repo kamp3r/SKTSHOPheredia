@@ -3,7 +3,7 @@ import Error from '../Error/Error'
 const ErrorView = () => {
     return (
         <div>
-            <Error />
+            <Error msg={'La pagina no existe'}/>
         </div>
     )
 }

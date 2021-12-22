@@ -1,0 +1,54 @@
+.signInUpLog{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 60rem;
+}
+
+.LogForm{
+    display: flex;
+    flex-direction: column;
+    min-height: 45rem;
+    width: 40%;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    border-radius: 1rem;
+    box-shadow: 10px 10px 5px #c7be49;
+    margin: 2rem;
+    padding: 1rem;
+}
+
+.LogForm input{
+    width: 100%;
+}
+
+.LogForm label{
+    font-size: 1.8rem;
+}
+
+.form-check-input[type="checkbox"]{
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    margin: 0 auto;
+}
+
+.buttonContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem;
+}
+.buttonContainer button{
+    margin: 1rem;
+    font-size: 1.8rem;
+    border-radius: 1rem;
+
+}
+.errorMsg{
+    font-size: 1.5rem;
+    text-align: center;
+}

@@ -1,12 +1,12 @@
 import React from "react";
 import "./Error.css";
 
-const Error = () => {
+const Error = ({msg}) => {
   return (
     <div className="errorMessageContainer">
       <div className="error">
         <p>ERROR 404</p>
-        <p>Lo sentimos, esta pagina no existe</p>
+        <p>{msg}</p>
       </div>
     </div>
   );

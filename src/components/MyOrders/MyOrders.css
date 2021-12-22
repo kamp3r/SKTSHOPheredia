@@ -1,0 +1,12 @@
+.containerCompra{
+    display: flex;
+    background-color: #fff;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+    border: 1px solid black;
+    text-align: center;
+
+}
+
+

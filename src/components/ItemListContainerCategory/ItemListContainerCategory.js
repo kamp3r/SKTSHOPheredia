@@ -33,8 +33,14 @@ const ItemListContainerCategory = ({ categoriaId }) => {
     <>
       <div className="ListContainer">
         <div className="containerElement">
-          <h1 className="categoryTitleR">{categoriaId}</h1>
-          {isLoading ? <Spinner /> : <ItemList items={item} />}
+          {isLoading ? (
+            <Spinner />
+          ) : (
+            <>
+              <h1 className="categoryTitleR">{categoriaId}</h1>
+              <ItemList items={item} />
+            </>
+          )}
         </div>
       </div>
     </>
