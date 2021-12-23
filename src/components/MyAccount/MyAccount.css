@@ -15,7 +15,15 @@
     padding: 5rem;
     font-size: 2rem;
 }
+
 .table{
-    font-size: 2rem;
     width: 95%;
+}
+
+.table th{
+    font-size: 1.7rem;
+}
+
+.table td{
+    font-size: 1.7rem;
 }

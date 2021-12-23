@@ -18,6 +18,7 @@ import {
 import "./Checkout.css";
 import { Link } from "react-router-dom";
 import { CartContext } from "../CartContext/CartContext";
+import { UserContext } from "../UserContext/UserContext";
 import { db } from "../../firebase/firebaseConfig";
 import {
   Timestamp,
@@ -51,6 +52,8 @@ const Checkout = () => {
   const [visible, setVisible] = useState(false);
   const { cart, precioFinal, deleteCart, formatoNumero } =
     useContext(CartContext);
+    const { usuarioGlobal, userMail } =
+    useContext(UserContext)
   const [validated, setValidated] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -71,7 +74,7 @@ const Checkout = () => {
       e.preventDefault();
       setValidated(true);
       const nuevaOrden = {
-        buyerInfo: userInfo,
+        buyerInfo: usuarioGlobal === true ? {email: `${userMail}`} : userInfo,
         items: cart,
         paymentMethod: cardType,
         cardNumber: cardNumber,
@@ -147,151 +150,139 @@ const Checkout = () => {
             onSubmit={handleSubmit}
           >
             <p className="subDivisor">Datos Personales</p>
-            <CCol md={6}>
-              <CFormFloating>
-                <CFormInput
-                  required
-                  type="text"
-                  id="inputNombre"
-                  name="nombre"
-                  placeholder="Nombre"
-                  onChange={onChangeHandler}
-                  value={userInfo.nombre}
-                  maxLength="20"
-                />
-                <CFormLabel className="col-form-label-lg" htmlFor="inputNombre">
-                  Nombre
-                </CFormLabel>
-              </CFormFloating>
-            </CCol>
-            <CCol md={6}>
-              <CFormFloating>
-                <CFormInput
-                  type="text"
-                  id="inputApellido"
-                  placeholder="Apellido"
-                  required
-                  onChange={onChangeHandler}
-                  name="apellido"
-                  value={userInfo.apellido}
-                  maxLength="20"
-                />
-                <CFormLabel
-                  className="col-form-label-lg"
-                  htmlFor="inputApellido"
-                >
-                  Apellido
-                </CFormLabel>
-              </CFormFloating>
-            </CCol>
-            <CCol md={6}>
-              <CFormFloating>
-                <CFormInput
-                  type="email"
-                  id="inputEmail"
-                  placeholder="Email"
-                  required
-                  onChange={onChangeHandler}
-                  name="email"
-                  value={userInfo.email}
-                  maxLength="60"
-                />
-                <CFormLabel className="col-form-label-lg" htmlFor="inputEmail">
-                  Email
-                </CFormLabel>
-              </CFormFloating>
-            </CCol>
-            <CCol md={12}>
-              <CFormFloating>
-                <CFormInput
-                  type="text"
-                  id="inputDireccion"
-                  placeholder="Direccion"
-                  required
-                  onChange={onChangeHandler}
-                  name="direccion"
-                  value={userInfo.direccion}
-                  maxLength="35"
-                />
-                <CFormLabel
-                  className="col-form-label-lg"
-                  htmlFor="inputDireccion"
-                >
-                  Direccion
-                </CFormLabel>
-              </CFormFloating>
-            </CCol>
-            <CCol md={6}>
-              <CFormFloating>
-                <CFormInput
-                  type="text"
-                  id="inputCiudad"
-                  placeholder="Ciudad"
-                  required
-                  onChange={onChangeHandler}
-                  name="ciudad"
-                  value={userInfo.ciudad}
-                  maxLength="20"
-                />
-                <CFormLabel className="col-form-label-lg" htmlFor="inputCiudad">
-                  Ciudad
-                </CFormLabel>
-              </CFormFloating>
-            </CCol>
-            <CCol md={4}>
-              <CFormFloating>
-                <CFormInput
-                  type="text"
-                  id="inputCodigo"
-                  placeholder="Codigo Postal"
-                  onChange={onChangeHandler}
-                  name="cp"
-                  value={userInfo.cp}
-                  maxLength={4}
-                  pattern="[0-9]{4}"
-                  required
-                />
-                <CFormLabel htmlFor="inputCodigo" className="col-form-label-lg">
-                  Codigo Postal
-                </CFormLabel>
-              </CFormFloating>
-            </CCol>
-            <CCol md={12}>
-              <CFormSelect
-                size="lg"
-                id="inputState"
-                name="provincia"
-                required
-                onChange={onChangeHandler}
-                value={userInfo.provincia}
-              >
-                <option value="">--Elegi tu Provincia--</option>
-                <option value="Buenos Aires">Buenos Aires</option>
-                <option value="Catamarca">Catamarca</option>
-                <option value="Chaco">Chaco</option>
-                <option value="Chubut">Chubut</option>
-                <option value="CABA">Ciudad Autonoma de Buenos Aires</option>
-                <option value="Córdoba">Córdoba</option>
-                <option value="Corrientes">Corrientes</option>
-                <option value="Entre Ríos">Entre Ríos</option>
-                <option value="Formosa">Formosa</option>
-                <option value="Jujuy">Jujuy</option>
-                <option value="La Pampa">La Pampa</option>
-                <option value="La Riojas">La Rioja</option>
-                <option value="Mendoza">Mendoza</option>
-                <option value="Misiones">Misiones</option>
-                <option value="Neuquén">Neuquén</option>
-                <option value="Río Negro">Río Negro</option>
-                <option value="Salta">Salta</option>
-                <option value="San Juan">San Juan</option>
-                <option value="San Lui">San Luis</option>
-                <option value="Santa Cruz">Santa Cruz</option>
-                <option value="Santa Fe">Santa Fe</option>
-                <option value="Santiago del Estero">Santiago del Estero</option>
-                <option value="Tierra del Fuego">Tierra del Fuego</option>
-                <option value="Tucumán">Tucumán</option>
-              </CFormSelect>
-            </CCol>
+            {usuarioGlobal ?  (<><CFormLabel htmlFor="inputUserMail">Estas comprando como</CFormLabel><CFormInput nome="email" id="inputUserMail" disabled value={userMail}/></>) : (<><CCol md={6}>
+                <CFormFloating>
+                  <CFormInput
+                    required
+                    type="text"
+                    id="inputNombre"
+                    name="nombre"
+                    placeholder="Nombre"
+                    onChange={onChangeHandler}
+                    value={userInfo.nombre}
+                    maxLength="20" />
+                  <CFormLabel className="col-form-label-lg" htmlFor="inputNombre">
+                    Nombre
+                  </CFormLabel>
+                </CFormFloating>
+              </CCol><CCol md={6}>
+                  <CFormFloating>
+                    <CFormInput
+                      type="text"
+                      id="inputApellido"
+                      placeholder="Apellido"
+                      required
+                      onChange={onChangeHandler}
+                      name="apellido"
+                      value={userInfo.apellido}
+                      maxLength="20" />
+                    <CFormLabel
+                      className="col-form-label-lg"
+                      htmlFor="inputApellido"
+                    >
+                      Apellido
+                    </CFormLabel>
+                  </CFormFloating>
+                </CCol><CCol md={6}>
+                  <CFormFloating>
+                    <CFormInput
+                      type="email"
+                      id="inputEmail"
+                      placeholder="Email"
+                      required
+                      onChange={onChangeHandler}
+                      name="email"
+                      value={userInfo.email}
+                      maxLength="60" />
+                    <CFormLabel className="col-form-label-lg" htmlFor="inputEmail">
+                      Email
+                    </CFormLabel>
+                  </CFormFloating>
+                </CCol><CCol md={12}>
+                  <CFormFloating>
+                    <CFormInput
+                      type="text"
+                      id="inputDireccion"
+                      placeholder="Direccion"
+                      required
+                      onChange={onChangeHandler}
+                      name="direccion"
+                      value={userInfo.direccion}
+                      maxLength="35" />
+                    <CFormLabel
+                      className="col-form-label-lg"
+                      htmlFor="inputDireccion"
+                    >
+                      Direccion
+                    </CFormLabel>
+                  </CFormFloating>
+                </CCol><CCol md={6}>
+                  <CFormFloating>
+                    <CFormInput
+                      type="text"
+                      id="inputCiudad"
+                      placeholder="Ciudad"
+                      required
+                      onChange={onChangeHandler}
+                      name="ciudad"
+                      value={userInfo.ciudad}
+                      maxLength="20" />
+                    <CFormLabel className="col-form-label-lg" htmlFor="inputCiudad">
+                      Ciudad
+                    </CFormLabel>
+                  </CFormFloating>
+                </CCol><CCol md={4}>
+                  <CFormFloating>
+                    <CFormInput
+                      type="text"
+                      id="inputCodigo"
+                      placeholder="Codigo Postal"
+                      onChange={onChangeHandler}
+                      name="cp"
+                      value={userInfo.cp}
+                      maxLength={4}
+                      pattern="[0-9]{4}"
+                      required />
+                    <CFormLabel htmlFor="inputCodigo" className="col-form-label-lg">
+                      Codigo Postal
+                    </CFormLabel>
+                  </CFormFloating>
+                </CCol><CCol md={12}>
+                  <CFormSelect
+                    size="lg"
+                    id="inputState"
+                    name="provincia"
+                    required
+                    onChange={onChangeHandler}
+                    value={userInfo.provincia}
+                  >
+                    <option value="">--Elegi tu Provincia--</option>
+                    <option value="Buenos Aires">Buenos Aires</option>
+                    <option value="Catamarca">Catamarca</option>
+                    <option value="Chaco">Chaco</option>
+                    <option value="Chubut">Chubut</option>
+                    <option value="CABA">Ciudad Autonoma de Buenos Aires</option>
+                    <option value="Córdoba">Córdoba</option>
+                    <option value="Corrientes">Corrientes</option>
+                    <option value="Entre Ríos">Entre Ríos</option>
+                    <option value="Formosa">Formosa</option>
+                    <option value="Jujuy">Jujuy</option>
+                    <option value="La Pampa">La Pampa</option>
+                    <option value="La Riojas">La Rioja</option>
+                    <option value="Mendoza">Mendoza</option>
+                    <option value="Misiones">Misiones</option>
+                    <option value="Neuquén">Neuquén</option>
+                    <option value="Río Negro">Río Negro</option>
+                    <option value="Salta">Salta</option>
+                    <option value="San Juan">San Juan</option>
+                    <option value="San Lui">San Luis</option>
+                    <option value="Santa Cruz">Santa Cruz</option>
+                    <option value="Santa Fe">Santa Fe</option>
+                    <option value="Santiago del Estero">Santiago del Estero</option>
+                    <option value="Tierra del Fuego">Tierra del Fuego</option>
+                    <option value="Tucumán">Tucumán</option>
+                  </CFormSelect>
+                </CCol></>)}
 
             <p className="subDivisor">Metodo de Pago</p>
 

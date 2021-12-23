@@ -43,8 +43,8 @@ const Myaccount = ({ userMail }) => {
       {isLoading ? (
         <Spinner />
       ) : (
-        <CTable color="dark" bordered>
-          <CTableHead align="middle">
+        <CTable color="warning" bordered borderColor="dark">
+          <CTableHead align="middle" color="dark">
             <CTableRow>
               <CTableHeaderCell scope="col">ID</CTableHeaderCell>
               <CTableHeaderCell scope="col">Fecha</CTableHeaderCell>

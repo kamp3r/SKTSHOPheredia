@@ -13,7 +13,7 @@ export const UserContext = createContext();
 export const UserProvider = ({ children }) => {
   const [validated, setValidated] = useState(false);
   const [registered, setRegistered] = useState(false);
-  const [usuarioGlobal, setUsuarioGlobal] = useState(false);
+  const [usuarioGlobal, setUsuarioGlobal] = useState(null);
   const [errorMsg, setErrorMsg] = useState("");
   const [userMail, setUserMail] = useState("");
 
@@ -26,10 +26,10 @@ export const UserProvider = ({ children }) => {
   useEffect(() => {
     onAuthStateChanged(auth, (logFirebase) => {
       if (logFirebase) {
-        setUsuarioGlobal(true);
+        setUsuarioGlobal(logFirebase);
         setUserMail(logFirebase.email);
       } else {
-        setUsuarioGlobal(false)
+        setUsuarioGlobal(null)
         ;
       }
     });
@@ -65,6 +65,9 @@ export const UserProvider = ({ children }) => {
             if (error.code === "auth/weak-password") {
               setErrorMsg("Tu contraseña debe tener al menos 6 caracteres");
             }
+            if (error.code === "auth/invalid-email"){
+              setErrorMsg("Utiliza un email valido")
+            }
           });
       } else {
         signInWithEmailAndPassword(auth, email, password).catch((error) => {
@@ -74,6 +77,7 @@ export const UserProvider = ({ children }) => {
           if (error.code === "auth/wrong-password") {
             setErrorMsg("Contraseña incorrecta!");
           }
+
         });
       }
     }
