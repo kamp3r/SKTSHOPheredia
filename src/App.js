@@ -25,7 +25,7 @@ function App() {
             <Route path="/items/:id" element={<ItemDetailContainer />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/checkout" element={<CheckoutView />} />
-            <Route path="/miCuenta" element={<MyAcc />}></Route>
+            <Route path="/MyAccount" element={<MyAcc />}></Route>
             <Route path="*" element={<ErrorView />} />
           </Routes>
           <Footer />

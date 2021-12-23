@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./MyAccount.css";
 import {
   CButton,
@@ -8,7 +8,6 @@ import {
   CTableRow,
   CTableHeaderCell,
 } from "@coreui/react";
-import { useContext } from "react/cjs/react.development";
 import { UserContext } from "../UserContext/UserContext";
 import { collection, where, query, getDocs } from "firebase/firestore";
 import { db } from "../../firebase/firebaseConfig";

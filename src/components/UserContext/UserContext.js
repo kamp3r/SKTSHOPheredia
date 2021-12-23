@@ -13,7 +13,7 @@ export const UserContext = createContext();
 export const UserProvider = ({ children }) => {
   const [validated, setValidated] = useState(false);
   const [registered, setRegistered] = useState(false);
-  const [usuarioGlobal, setUsuarioGlobal] = useState(null);
+  const [usuarioGlobal, setUsuarioGlobal] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
   const [userMail, setUserMail] = useState("");
 
@@ -21,25 +21,23 @@ export const UserProvider = ({ children }) => {
 
   const handleLogGoogle = () => {
     signInWithRedirect(auth, googleProvider);
-    
   };
 
-  useEffect ( ()=>{
+  useEffect(() => {
     onAuthStateChanged(auth, (logFirebase) => {
       if (logFirebase) {
-        setUsuarioGlobal(logFirebase);
-        setUserMail(logFirebase.email)
+        setUsuarioGlobal(true);
+        setUserMail(logFirebase.email);
       } else {
-        setUsuarioGlobal(null);
+        setUsuarioGlobal(false)
+        ;
       }
     });
-  },[])
-  
+  }, []);
 
   const handleSignOut = () => {
     signOut(auth);
   };
-
 
   async function handleSign(e) {
     e.preventDefault();
@@ -58,7 +56,7 @@ export const UserProvider = ({ children }) => {
             alert(
               `Creaste tu usuario correctamente con tu email ${user.email}`
             );
-            setUserMail(email)
+            setUserMail(email);
           })
           .catch((error) => {
             if (error.code === "auth/email-already-in-use") {
