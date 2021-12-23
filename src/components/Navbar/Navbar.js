@@ -36,7 +36,7 @@ const Navbar = () => {
         <NavLink to="/category/BMX" onClick={toggle} className="nav-links">
           BMX
         </NavLink>
-        <NavLink to="/miCuenta" onClick={toggle} className="nav-links">
+        <NavLink to="/MyAccount" onClick={toggle} className="nav-links">
           {usuarioGlobal ? "Mi cuenta" : "Iniciar Sesion"}
         </NavLink>
       </ul>
