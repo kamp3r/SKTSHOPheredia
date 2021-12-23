@@ -15,6 +15,7 @@
     padding: 5rem;
     font-size: 2rem;
 }
-table{
-    font-size: 2rem
+.table{
+    font-size: 2rem;
+    width: 95%;
 }
