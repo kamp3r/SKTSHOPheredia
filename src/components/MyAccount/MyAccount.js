@@ -62,7 +62,7 @@ const Myaccount = ({ userMail }) => {
           </CTableBody>
         </CTable>
       )}
-      <CButton size="lg" color="danger" onClick={handleSignOut}>
+      <CButton size="lg" color="danger" onClick={()=>handleSignOut()}>
         Cerrar Sesion
       </CButton>
     </div>

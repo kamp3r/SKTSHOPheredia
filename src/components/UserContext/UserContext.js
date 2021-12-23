@@ -1,4 +1,4 @@
-import React, { useState, createContext } from "react";
+import React, { useState, createContext, useEffect } from "react";
 import { auth } from "../../firebase/firebaseConfig";
 import {
   createUserWithEmailAndPassword,
@@ -24,14 +24,17 @@ export const UserProvider = ({ children }) => {
     
   };
 
-  onAuthStateChanged(auth, (logFirebase) => {
-    if (logFirebase) {
-      setUsuarioGlobal(logFirebase);
-      setUserMail(logFirebase.email)
-    } else {
-      setUsuarioGlobal(null);
-    }
-  });
+  useEffect ( ()=>{
+    onAuthStateChanged(auth, (logFirebase) => {
+      if (logFirebase) {
+        setUsuarioGlobal(logFirebase);
+        setUserMail(logFirebase.email)
+      } else {
+        setUsuarioGlobal(null);
+      }
+    });
+  },[])
+  
 
   const handleSignOut = () => {
     signOut(auth);
