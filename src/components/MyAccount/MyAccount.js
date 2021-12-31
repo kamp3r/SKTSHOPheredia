@@ -38,12 +38,7 @@ const Myaccount = ({ userMail }) => {
     getInfo();  
   }, [userMail]);
 
-  const refresh = () =>{
-    if(usuarioGlobal.emailVerified){
-      window.location.reload(true)
-    }
-  }
-  
+    
   return (
     usuarioGlobal.emailVerified ? (
     <div className="myAccountContainer">
@@ -72,7 +67,7 @@ const Myaccount = ({ userMail }) => {
       <CButton size="lg" color="danger" onClick={()=>handleSignOut()}>
         Cerrar Sesion
       </CButton>
-    </div>) : (<div className="warningMSG"><Error className="editWarning" msg={'La pagina no puede ser mostrada ya que tu usuario no fue verificado!'}/> <CButton className="Epic" size="lg" color="warning" onClick={refresh}>Ya valide mi mail!</CButton></div>)
+    </div>) : (<div className="warningMSG"><Error className="editWarning" msg={'La pagina no puede ser mostrada ya que tu usuario no fue verificado!'}/> <CButton className="Epic" size="lg" color="warning">Ya valide mi mail!</CButton></div>)
   );
 };
 

@@ -33,8 +33,7 @@ export const UserProvider = ({ children }) => {
       if (logFirebase) {
         setUsuarioGlobal(logFirebase);
         setUserMail(logFirebase.email);
-        logFirebase.getIdToken(true)
-        if (logFirebase.emailVerified === false) {
+        if (!logFirebase.emailVerified) {
           sendEmailVerification(logFirebase)
         }
       } else {
