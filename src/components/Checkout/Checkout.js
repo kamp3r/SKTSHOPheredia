@@ -52,7 +52,7 @@ const Checkout = () => {
   const [visible, setVisible] = useState(false);
   const { cart, precioFinal, deleteCart, formatoNumero } =
     useContext(CartContext);
-    const { usuarioGlobal, userMail } =
+    const { usuarioGlobal, userMail, userReg} =
     useContext(UserContext)
   const [validated, setValidated] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -74,7 +74,7 @@ const Checkout = () => {
       e.preventDefault();
       setValidated(true);
       const nuevaOrden = {
-        buyerInfo: usuarioGlobal === true ? {email: `${userMail}`} : userInfo,
+        buyerInfo: usuarioGlobal ? userReg : userInfo,
         items: cart,
         paymentMethod: cardType,
         cardNumber: cardNumber,

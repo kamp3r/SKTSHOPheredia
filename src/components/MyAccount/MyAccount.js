@@ -13,9 +13,10 @@ import { collection, where, query, getDocs } from "firebase/firestore";
 import { db } from "../../firebase/firebaseConfig";
 import MyOrders from "../MyOrders/MyOrders";
 import Spinner from "../Spinner/Spinner";
+import Error from "../Error/Error"
 
 const Myaccount = ({ userMail }) => {
-  const { handleSignOut } = useContext(UserContext);
+  const { handleSignOut, usuarioGlobal } = useContext(UserContext);
   const [listaCompra, setListaCompra] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -34,10 +35,17 @@ const Myaccount = ({ userMail }) => {
       setListaCompra(orders);
       setIsLoading(false);
     };
-    getInfo();
+    getInfo();  
   }, [userMail]);
 
+  const refresh = () =>{
+    if(usuarioGlobal.emailVerified){
+      window.location.reload(true)
+    }
+  }
+  
   return (
+    usuarioGlobal.emailVerified ? (
     <div className="myAccountContainer">
       <h1>Bienvenida/o {userMail} !</h1>
       {isLoading ? (
@@ -64,7 +72,7 @@ const Myaccount = ({ userMail }) => {
       <CButton size="lg" color="danger" onClick={()=>handleSignOut()}>
         Cerrar Sesion
       </CButton>
-    </div>
+    </div>) : (<div className="warningMSG"><Error className="editWarning" msg={'La pagina no puede ser mostrada ya que tu usuario no fue verificado!'}/> <CButton className="Epic" size="lg" color="warning" onClick={refresh}>Ya valide mi mail!</CButton></div>)
   );
 };
 

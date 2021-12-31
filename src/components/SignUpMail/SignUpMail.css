@@ -6,11 +6,10 @@
     min-height: 60rem;
 }
 
-.LogForm{
+.formLog{
     display: flex;
-    flex-direction: column;
     min-height: 45rem;
-    width: 40%;
+    width: 45%;
     align-items: center;
     justify-content: center;
     background-color: #fff;
@@ -20,11 +19,11 @@
     padding: 1rem;
 }
 
-.LogForm input{
+.formLog input{
     width: 100%;
 }
 
-.LogForm label{
+.formLog label{
     font-size: 1.8rem;
 }
 
@@ -51,4 +50,69 @@
 .errorMsg{
     font-size: 1.5rem;
     text-align: center;
+}
+
+
+@media screen and (max-width: 1200px){
+
+    .cFormContLog{
+        width: 60%;
+    }
+
+    .formLog{
+      width: 60%;
+    }
+
+    .formLog input {
+        width: 100%;
+    }
+
+    .formLog .form-label{
+        width: 50%;
+        margin-left: 1rem;
+    }
+
+    .cFormChecked{
+        width: 50%;
+        margin: 1rem auto;
+    }
+
+    .form-check-input[type="checkbox"]{
+        width: 2rem;
+        height: 2rem;
+        display: flex;
+        margin: 0 auto;
+    }
+}
+
+@media screen and (max-width: 600px){
+    .cFormContLog{
+        width: 70%;
+    }
+
+    .formLog{
+      width: 70%;
+    }
+
+    .formLog input {
+        width: 100%;
+    }
+
+    .formLog .form-label{
+        width: 60%;
+        margin-left: 1rem;
+    }
+
+    .form-check-input[type="checkbox"]{
+        width: 2rem;
+        height: 2rem;
+        display: flex;
+        margin: 0 auto;
+    }
+
+
+    .cFormChecked{
+        width: 72%;
+        margin: 1rem auto;
+    }
 }
