@@ -3,9 +3,9 @@ import { auth, db } from "../../firebase/firebaseConfig";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  onAuthStateChanged,
   signOut,
   sendEmailVerification,
+  onAuthStateChanged
 } from "firebase/auth";
 import { addDoc, collection, Timestamp } from "firebase/firestore";
 export const UserContext = createContext();
@@ -27,20 +27,31 @@ export const UserProvider = ({ children }) => {
   const [usuarioGlobal, setUsuarioGlobal] = useState(null);
   const [errorMsg, setErrorMsg] = useState("");
   const [userMail, setUserMail] = useState("");
+  const [emailVerificated, setEmailVerificated] = useState(false)
 
   useEffect(() => {
-    onAuthStateChanged(auth, (logFirebase) => {
-      if (logFirebase) {
+    onAuthStateChanged(auth, async(logFirebase) => {
+      if (logFirebase) {    
         setUsuarioGlobal(logFirebase);
         setUserMail(logFirebase.email);
-        if (!logFirebase.emailVerified) {
+        if (!logFirebase?.emailVerified) {
           sendEmailVerification(logFirebase)
+          let intervalVerified = setInterval(() =>{
+            setEmailVerificated(logFirebase.emailVerified)
+            logFirebase.reload().then(ok =>{
+              if(logFirebase.emailVerified === true){
+                setEmailVerificated(logFirebase.emailVerified)
+                clearInterval(intervalVerified)
+              }
+            })
+          }, 5000)
         }
       } else {
         setUsuarioGlobal(null);
       }
     });
   }, []);
+  
 
   const handleSignOut = () => {
     signOut(auth);
@@ -115,6 +126,7 @@ export const UserProvider = ({ children }) => {
         changeHandler,
         userReg,
         setUserReg,
+        emailVerificated
       }}
     >
       {children}

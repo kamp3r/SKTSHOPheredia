@@ -5,9 +5,7 @@ import { CartContext } from "../CartContext/CartContext";
 
 const MyOrders = ({ compra }) => {
 
-  var stingifyDate = compra.Date.toDate().toISOString();
-  var split1 = stingifyDate.split('T');
-  var date = split1[0]
+  let date = compra.Date.toDate().toLocaleDateString('en-GB');
 
   const {formatoNumero} = useContext(CartContext)
 

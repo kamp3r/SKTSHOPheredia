@@ -16,9 +16,10 @@ import Spinner from "../Spinner/Spinner";
 import Error from "../Error/Error"
 
 const Myaccount = ({ userMail }) => {
-  const { handleSignOut, usuarioGlobal } = useContext(UserContext);
+  const { handleSignOut, emailVerificated} = useContext(UserContext);
   const [listaCompra, setListaCompra] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  
 
   useEffect(() => {
     const getInfo = async () => {
@@ -37,10 +38,9 @@ const Myaccount = ({ userMail }) => {
     };
     getInfo();  
   }, [userMail]);
-
     
   return (
-    usuarioGlobal.emailVerified ? (
+    emailVerificated ? (
     <div className="myAccountContainer">
       <h1>Bienvenida/o {userMail} !</h1>
       {isLoading ? (
@@ -67,7 +67,7 @@ const Myaccount = ({ userMail }) => {
       <CButton size="lg" color="danger" onClick={()=>handleSignOut()}>
         Cerrar Sesion
       </CButton>
-    </div>) : (<div className="warningMSG"><Error className="editWarning" msg={'La pagina no puede ser mostrada ya que tu usuario no fue verificado!'}/> <CButton className="Epic" size="lg" color="warning">Ya valide mi mail!</CButton></div>)
+    </div>) : (<Error className="editWarning" msg={'La pagina no puede ser mostrada ya que tu usuario no fue verificado!'}/>)
   );
 };
 
