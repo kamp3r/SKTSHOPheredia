@@ -38,11 +38,9 @@ export const UserProvider = ({ children }) => {
         if (!logFirebase.emailVerified) {
           let intervalVerified = setInterval(() =>{
             setEmailVerificated(logFirebase.emailVerified)
-            console.log(logFirebase.emailVerified)
             logFirebase.reload().then(ok =>{
               if(logFirebase.emailVerified === true){
                 setEmailVerificated(logFirebase.emailVerified)
-                console.log(logFirebase.emailVerified)
                 clearInterval(intervalVerified)
               }
             })
