@@ -27,20 +27,22 @@ export const UserProvider = ({ children }) => {
   const [usuarioGlobal, setUsuarioGlobal] = useState(null);
   const [errorMsg, setErrorMsg] = useState("");
   const [userMail, setUserMail] = useState("");
-  const [emailVerificated, setEmailVerificated] = useState(false)
+  const [emailVerificated, setEmailVerificated] = useState(true)
 
   useEffect(() => {
     onAuthStateChanged(auth, async(logFirebase) => {
-      if (logFirebase) {    
+      if (logFirebase) { 
+        sendEmailVerification(logFirebase)   
         setUsuarioGlobal(logFirebase);
         setUserMail(logFirebase.email);
-        if (!logFirebase?.emailVerified) {
-          sendEmailVerification(logFirebase)
+        if (!logFirebase.emailVerified) {
           let intervalVerified = setInterval(() =>{
             setEmailVerificated(logFirebase.emailVerified)
+            console.log(logFirebase.emailVerified)
             logFirebase.reload().then(ok =>{
               if(logFirebase.emailVerified === true){
                 setEmailVerificated(logFirebase.emailVerified)
+                console.log(logFirebase.emailVerified)
                 clearInterval(intervalVerified)
               }
             })

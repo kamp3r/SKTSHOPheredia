@@ -22,6 +22,7 @@ const Myaccount = ({ userMail }) => {
   
 
   useEffect(() => {
+    setTimeout(() => {
     const getInfo = async () => {
       setIsLoading(true);
       const q = query(
@@ -37,7 +38,9 @@ const Myaccount = ({ userMail }) => {
       setIsLoading(false);
     };
     getInfo();  
+  },4500)
   }, [userMail]);
+
     
   return (
     emailVerificated ? (
