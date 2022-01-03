@@ -29,7 +29,6 @@ const SignUpMail = () => {
       <h1>{registered ? "Inicia Sesion" : "Registrate acá"}</h1>
       <CForm
         className="row g-3 needs-validation formLog"
-        noValidate
         validated={validated}
         onSubmit={handleSign}
       >
@@ -50,27 +49,27 @@ const SignUpMail = () => {
           <>
             <CCol md={5} className="cFormContLog">
               <CFormLabel htmlFor="nombreReg">Nombre</CFormLabel>
-              <CFormInput onChange={changeHandler} value={userReg.nombre} name="nombre" type="text" id="nombreReg" required />
+              <CFormInput onChange={changeHandler} value={userReg.nombre} name="nombre" type="text" id="nombreReg" required maxLength="30"/>
               <CFormFeedback valid>Correcto!</CFormFeedback>
             </CCol>
             <CCol md={5} className="cFormContLog">
               <CFormLabel htmlFor="apellidoReg">Apellido</CFormLabel>
-              <CFormInput onChange={changeHandler} value={userReg.apellido} name="apellido" type="text" id="apellidoReg" required />
+              <CFormInput onChange={changeHandler} value={userReg.apellido} name="apellido" type="text" id="apellidoReg" required maxLength="30"/>
               <CFormFeedback valid>Correcto!</CFormFeedback>
             </CCol>
             <CCol md={5} className="cFormContLog">
               <CFormLabel htmlFor="direccionReg">Direccion</CFormLabel>
-              <CFormInput onChange={changeHandler} value={userReg.direccion} name="direccion" type="text" id="direccionReg" required />
+              <CFormInput onChange={changeHandler} value={userReg.direccion} name="direccion" type="text" id="direccionReg" required maxLength="60"/>
               <CFormFeedback valid>Correcto!</CFormFeedback>
             </CCol>
             <CCol md={5} className="cFormContLog">
               <CFormLabel htmlFor="ciudadReg">Ciudad</CFormLabel>
-              <CFormInput onChange={changeHandler} value={userReg.ciudad} name="ciudad" type="text" id="ciudadReg" required />
+              <CFormInput onChange={changeHandler} value={userReg.ciudad} name="ciudad" type="text" id="ciudadReg" required maxLength="40"/>
               <CFormFeedback valid>Correcto!</CFormFeedback>
             </CCol>
             <CCol md={3} className="cFormContLog">
               <CFormLabel htmlFor="cpReg">Codigo Postal</CFormLabel>
-              <CFormInput onChange={changeHandler} value={userReg.cp} name="cp" type="text" id="cpReg" required />
+              <CFormInput onChange={changeHandler} value={userReg.cp} name="cp" type="text" id="cpReg" required maxLength={4}pattern="[0-9]{4}"/>
               <CFormFeedback valid>Correcto!</CFormFeedback>
             </CCol>
             <CCol md={7}>
@@ -105,7 +104,7 @@ const SignUpMail = () => {
             </CCol>
             <CCol md={5} className="cFormContLog">
               <CFormLabel htmlFor="name">Email</CFormLabel>
-              <CFormInput type="email" id="email" onChange={changeHandler} value={userReg.email} name="email" required size="lg" />
+              <CFormInput type="email" id="email" onChange={changeHandler} value={userReg.email} name="email" required size="lg" maxLength="60"/>
               <CFormFeedback valid>Correcto!</CFormFeedback>
             </CCol>
 

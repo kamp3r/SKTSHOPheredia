@@ -74,6 +74,10 @@ option {
   justify-content: center;
 }
 
+#inputUserMail{
+  text-align: center;
+}
+
 .modal-title {
   font-size: 2rem;
 }

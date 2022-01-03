@@ -160,7 +160,7 @@ const Checkout = () => {
                     placeholder="Nombre"
                     onChange={onChangeHandler}
                     value={userInfo.nombre}
-                    maxLength="20" />
+                    maxLength="30" />
                   <CFormLabel className="col-form-label-lg" htmlFor="inputNombre">
                     Nombre
                   </CFormLabel>
@@ -175,7 +175,7 @@ const Checkout = () => {
                       onChange={onChangeHandler}
                       name="apellido"
                       value={userInfo.apellido}
-                      maxLength="20" />
+                      maxLength="30" />
                     <CFormLabel
                       className="col-form-label-lg"
                       htmlFor="inputApellido"
@@ -208,7 +208,7 @@ const Checkout = () => {
                       onChange={onChangeHandler}
                       name="direccion"
                       value={userInfo.direccion}
-                      maxLength="35" />
+                      maxLength="40" />
                     <CFormLabel
                       className="col-form-label-lg"
                       htmlFor="inputDireccion"
@@ -226,7 +226,7 @@ const Checkout = () => {
                       onChange={onChangeHandler}
                       name="ciudad"
                       value={userInfo.ciudad}
-                      maxLength="20" />
+                      maxLength="30" />
                     <CFormLabel className="col-form-label-lg" htmlFor="inputCiudad">
                       Ciudad
                     </CFormLabel>
