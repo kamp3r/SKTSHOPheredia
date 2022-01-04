@@ -52,6 +52,10 @@
     text-align: center;
 }
 
+#provReg{
+    height: 3.5rem;
+}
+
 
 @media screen and (max-width: 1200px){
 
@@ -85,13 +89,20 @@
     }
 }
 
+@media screen and (max-width: 767px){
+    .selectProv{
+        width: 60%;
+    }
+}
+
+
 @media screen and (max-width: 600px){
     .cFormContLog{
         width: 70%;
     }
 
     .formLog{
-      width: 70%;
+      width: 85%;
     }
 
     .formLog input {
@@ -114,5 +125,8 @@
     .cFormChecked{
         width: 72%;
         margin: 1rem auto;
+    }
+    .selectProv{
+        width: 72%;
     }
 }

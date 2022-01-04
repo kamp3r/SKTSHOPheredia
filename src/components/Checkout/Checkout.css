@@ -77,6 +77,9 @@ option {
 #inputUserMail{
   text-align: center;
 }
+#inputState{
+  height: 5rem;
+}
 
 .buyingBy{
   text-align: center;

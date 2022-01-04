@@ -72,7 +72,7 @@ const SignUpMail = () => {
               <CFormInput onChange={changeHandler} value={userReg.cp} name="cp" type="text" id="cpReg" required maxLength={4}pattern="[0-9]{4}"/>
               <CFormFeedback valid>Correcto!</CFormFeedback>
             </CCol>
-            <CCol md={7}>
+            <CCol md={7} className="selectProv">
               <CFormLabel htmlFor="provReg">Provincia</CFormLabel>
               <CFormSelect onChange={changeHandler} value={userReg.provincia} name="provincia" size="lg" id="provReg" required>
                 <option value="">--Elegi tu Provincia--</option>
