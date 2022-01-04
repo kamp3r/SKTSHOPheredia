@@ -28,7 +28,7 @@ import {
   getDocs,
   where,
   documentId,
-  query,
+  query
 } from "firebase/firestore";
 import Spinner from "../Spinner/Spinner";
 
@@ -42,7 +42,7 @@ const initialValues = {
   provincia: "",
 };
 
-const Checkout = () => {
+const Checkout = ({mailUser}) => {
   const [userInfo, setUserInfo] = useState(initialValues);
   const [cardType, setCardType] = useState("");
   const [cardNumber, setCardNumber] = useState("");
@@ -52,8 +52,8 @@ const Checkout = () => {
   const [visible, setVisible] = useState(false);
   const { cart, precioFinal, deleteCart, formatoNumero } =
     useContext(CartContext);
-    const { usuarioGlobal, userMail, userReg} =
-    useContext(UserContext)
+  const { usuarioGlobal, userMail, userReg, setUserReg } =
+    useContext(UserContext);
   const [validated, setValidated] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -63,8 +63,16 @@ const Checkout = () => {
         setIsLoading(false);
       }, 1000);
     }
-  }, [isLoading]);
-
+    const getUserInfo = async () => {
+      const q = query(collection(db, "users"), where("email", "==", mailUser));
+      const querySnapshot = await getDocs(q);
+      querySnapshot.forEach((doc) => {
+        setUserReg({...doc.data()});
+      });
+    };
+    getUserInfo()
+  }, [isLoading, mailUser,setUserReg]);
+  
   const handleSubmit = (e) => {
     const form = e.currentTarget;
     if (form.checkValidity() === false) {
@@ -73,6 +81,7 @@ const Checkout = () => {
     } else {
       e.preventDefault();
       setValidated(true);
+
       const nuevaOrden = {
         buyerInfo: usuarioGlobal ? userReg : userInfo,
         items: cart,
@@ -150,22 +159,41 @@ const Checkout = () => {
             onSubmit={handleSubmit}
           >
             <p className="subDivisor">Datos Personales</p>
-            {usuarioGlobal ?  (<><CFormLabel htmlFor="inputUserMail">Estas comprando como</CFormLabel><CFormInput nome="email" id="inputUserMail" disabled value={userMail}/></>) : (<><CCol md={6}>
-                <CFormFloating>
-                  <CFormInput
-                    required
-                    type="text"
-                    id="inputNombre"
-                    name="nombre"
-                    placeholder="Nombre"
-                    onChange={onChangeHandler}
-                    value={userInfo.nombre}
-                    maxLength="30" />
-                  <CFormLabel className="col-form-label-lg" htmlFor="inputNombre">
-                    Nombre
-                  </CFormLabel>
-                </CFormFloating>
-              </CCol><CCol md={6}>
+            {usuarioGlobal ? (
+              <>
+                <CFormLabel className="buyinBy" htmlFor="inputUserMail">
+                  Estas comprando como
+                </CFormLabel>
+                <CFormInput
+                  nome="email"
+                  id="inputUserMail"
+                  disabled
+                  value={userMail}
+                />
+              </>
+            ) : (
+              <>
+                <CCol md={6}>
+                  <CFormFloating>
+                    <CFormInput
+                      required
+                      type="text"
+                      id="inputNombre"
+                      name="nombre"
+                      placeholder="Nombre"
+                      onChange={onChangeHandler}
+                      value={userInfo.nombre}
+                      maxLength="30"
+                    />
+                    <CFormLabel
+                      className="col-form-label-lg"
+                      htmlFor="inputNombre"
+                    >
+                      Nombre
+                    </CFormLabel>
+                  </CFormFloating>
+                </CCol>
+                <CCol md={6}>
                   <CFormFloating>
                     <CFormInput
                       type="text"
@@ -175,7 +203,8 @@ const Checkout = () => {
                       onChange={onChangeHandler}
                       name="apellido"
                       value={userInfo.apellido}
-                      maxLength="30" />
+                      maxLength="30"
+                    />
                     <CFormLabel
                       className="col-form-label-lg"
                       htmlFor="inputApellido"
@@ -183,7 +212,8 @@ const Checkout = () => {
                       Apellido
                     </CFormLabel>
                   </CFormFloating>
-                </CCol><CCol md={6}>
+                </CCol>
+                <CCol md={6}>
                   <CFormFloating>
                     <CFormInput
                       type="email"
@@ -193,12 +223,17 @@ const Checkout = () => {
                       onChange={onChangeHandler}
                       name="email"
                       value={userInfo.email}
-                      maxLength="60" />
-                    <CFormLabel className="col-form-label-lg" htmlFor="inputEmail">
+                      maxLength="60"
+                    />
+                    <CFormLabel
+                      className="col-form-label-lg"
+                      htmlFor="inputEmail"
+                    >
                       Email
                     </CFormLabel>
                   </CFormFloating>
-                </CCol><CCol md={12}>
+                </CCol>
+                <CCol md={12}>
                   <CFormFloating>
                     <CFormInput
                       type="text"
@@ -208,7 +243,8 @@ const Checkout = () => {
                       onChange={onChangeHandler}
                       name="direccion"
                       value={userInfo.direccion}
-                      maxLength="40" />
+                      maxLength="40"
+                    />
                     <CFormLabel
                       className="col-form-label-lg"
                       htmlFor="inputDireccion"
@@ -216,7 +252,8 @@ const Checkout = () => {
                       Direccion
                     </CFormLabel>
                   </CFormFloating>
-                </CCol><CCol md={6}>
+                </CCol>
+                <CCol md={6}>
                   <CFormFloating>
                     <CFormInput
                       type="text"
@@ -226,12 +263,17 @@ const Checkout = () => {
                       onChange={onChangeHandler}
                       name="ciudad"
                       value={userInfo.ciudad}
-                      maxLength="30" />
-                    <CFormLabel className="col-form-label-lg" htmlFor="inputCiudad">
+                      maxLength="30"
+                    />
+                    <CFormLabel
+                      className="col-form-label-lg"
+                      htmlFor="inputCiudad"
+                    >
                       Ciudad
                     </CFormLabel>
                   </CFormFloating>
-                </CCol><CCol md={4}>
+                </CCol>
+                <CCol md={4}>
                   <CFormFloating>
                     <CFormInput
                       type="text"
@@ -242,12 +284,17 @@ const Checkout = () => {
                       value={userInfo.cp}
                       maxLength={4}
                       pattern="[0-9]{4}"
-                      required />
-                    <CFormLabel htmlFor="inputCodigo" className="col-form-label-lg">
+                      required
+                    />
+                    <CFormLabel
+                      htmlFor="inputCodigo"
+                      className="col-form-label-lg"
+                    >
                       Codigo Postal
                     </CFormLabel>
                   </CFormFloating>
-                </CCol><CCol md={12}>
+                </CCol>
+                <CCol md={12}>
                   <CFormSelect
                     size="lg"
                     id="inputState"
@@ -261,7 +308,9 @@ const Checkout = () => {
                     <option value="Catamarca">Catamarca</option>
                     <option value="Chaco">Chaco</option>
                     <option value="Chubut">Chubut</option>
-                    <option value="CABA">Ciudad Autonoma de Buenos Aires</option>
+                    <option value="CABA">
+                      Ciudad Autonoma de Buenos Aires
+                    </option>
                     <option value="Córdoba">Córdoba</option>
                     <option value="Corrientes">Corrientes</option>
                     <option value="Entre Ríos">Entre Ríos</option>
@@ -278,11 +327,15 @@ const Checkout = () => {
                     <option value="San Lui">San Luis</option>
                     <option value="Santa Cruz">Santa Cruz</option>
                     <option value="Santa Fe">Santa Fe</option>
-                    <option value="Santiago del Estero">Santiago del Estero</option>
+                    <option value="Santiago del Estero">
+                      Santiago del Estero
+                    </option>
                     <option value="Tierra del Fuego">Tierra del Fuego</option>
                     <option value="Tucumán">Tucumán</option>
                   </CFormSelect>
-                </CCol></>)}
+                </CCol>
+              </>
+            )}
 
             <p className="subDivisor">Metodo de Pago</p>
 

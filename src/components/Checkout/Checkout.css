@@ -78,6 +78,11 @@ option {
   text-align: center;
 }
 
+.buyingBy{
+  text-align: center;
+  font-size: 3rem;
+}
+
 .modal-title {
   font-size: 2rem;
 }

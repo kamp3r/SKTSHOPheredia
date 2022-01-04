@@ -15,7 +15,7 @@ import MyOrders from "../MyOrders/MyOrders";
 import Spinner from "../Spinner/Spinner";
 import Error from "../Error/Error"
 
-const Myaccount = ({ userMail }) => {
+const Myaccount = ({userMail}) => {
   const { handleSignOut, emailVerificated} = useContext(UserContext);
   const [listaCompra, setListaCompra] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -49,6 +49,8 @@ const Myaccount = ({ userMail }) => {
       {isLoading ? (
         <Spinner />
       ) : (
+        <>
+        <h2>Resumen de Compras</h2>
         <CTable color="warning" bordered borderColor="dark">
           <CTableHead align="middle" color="dark">
             <CTableRow>
@@ -66,8 +68,9 @@ const Myaccount = ({ userMail }) => {
               : null}
           </CTableBody>
         </CTable>
+        </>
       )}
-      <CButton size="lg" color="danger" onClick={()=>handleSignOut()}>
+      <CButton className="cerrarSesion" size="lg" color="danger" onClick={()=>handleSignOut()}>
         Cerrar Sesion
       </CButton>
     </div>) : (<Error className="editWarning" msg={'La pagina no puede ser mostrada ya que tu usuario no fue verificado!'}/>)

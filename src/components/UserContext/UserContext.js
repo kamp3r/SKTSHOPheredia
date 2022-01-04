@@ -7,7 +7,7 @@ import {
   sendEmailVerification,
   onAuthStateChanged
 } from "firebase/auth";
-import { addDoc, collection, Timestamp } from "firebase/firestore";
+import { addDoc, collection } from "firebase/firestore";
 export const UserContext = createContext();
 
 const valoresIniciales = {
@@ -20,7 +20,7 @@ const valoresIniciales = {
   provincia: "",
 };
 
-export const UserProvider = ({ children }) => {
+export const UserProvider = ({children}) => {
   const [userReg, setUserReg] = useState(valoresIniciales);
   const [validated, setValidated] = useState(false);
   const [registered, setRegistered] = useState(false);
@@ -28,17 +28,19 @@ export const UserProvider = ({ children }) => {
   const [errorMsg, setErrorMsg] = useState("");
   const [userMail, setUserMail] = useState("");
   const [emailVerificated, setEmailVerificated] = useState(true)
+  
+  
 
   useEffect(() => {
     onAuthStateChanged(auth, async(logFirebase) => {
       if (logFirebase) { 
-        sendEmailVerification(logFirebase)   
         setUsuarioGlobal(logFirebase);
         setUserMail(logFirebase.email);
         if (!logFirebase.emailVerified) {
+          sendEmailVerification(logFirebase)   
           let intervalVerified = setInterval(() =>{
             setEmailVerificated(logFirebase.emailVerified)
-            logFirebase.reload().then(ok =>{
+            logFirebase.reload().then(()=>{
               if(logFirebase.emailVerified === true){
                 setEmailVerificated(logFirebase.emailVerified)
                 clearInterval(intervalVerified)
@@ -81,8 +83,7 @@ export const UserProvider = ({ children }) => {
             );
             setUserMail(email);
             const nuevoUser = {
-              buyerInfo: userReg,
-              Date: Timestamp.fromDate(new Date()),
+              ...userReg,
             };
             const userRef = collection(db, "users");
             addDoc(userRef, nuevoUser);
@@ -111,6 +112,8 @@ export const UserProvider = ({ children }) => {
       }
     }
   }
+
+  
 
   return (
     <UserContext.Provider
