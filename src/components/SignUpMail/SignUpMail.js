@@ -36,12 +36,12 @@ const SignUpMail = () => {
           <>
             <CCol md={5} className="cFormContLog">
               <CFormLabel htmlFor="name">Email</CFormLabel>
-              <CFormInput type="email" id="email" required size="lg" />
+              <CFormInput type="email" id="email" required size="lg" maxLength="60"/>
               <CFormFeedback valid>Correcto!</CFormFeedback>
             </CCol>
             <CCol md={5} className="cFormContLog">
               <CFormLabel htmlFor="email">Contraseña</CFormLabel>
-              <CFormInput type="password" id="password" required />
+              <CFormInput type="password" id="password" required minLength={6}/>
               <CFormFeedback valid>Correcto!</CFormFeedback>
             </CCol>
           </>
@@ -167,7 +167,7 @@ const SignUpMail = () => {
 
             <CCol md={5} className="cFormContLog">
               <CFormLabel htmlFor="email">Contraseña</CFormLabel>
-              <CFormInput type="password" id="password" required />
+              <CFormInput type="password" id="password" required minLength={6}/>
               <CFormFeedback valid>Correcto!</CFormFeedback>
             </CCol>
           </>
