@@ -99,18 +99,18 @@ option {
 }
 
 .swal2-title {
-  font-size: 3rem;
+  font-size: 3rem !important;
 }
 .swal2-html-container {
-  font-size: 2rem;
+  font-size: 2rem !important;;
 }
 .swal2-styled.swal2-confirm {
-  font-size: 1.5rem;
-  background-color: #daac42;
+  font-size: 1.5rem !important;
+  background-color: #daac42 !important;;
 }
 
 .swal2-icon.swal2-success [class^="swal2-success-line"] {
-  background-color: #e7a60f;
+  background-color: #e7a60f !important;;
 }
 
 .swal2-icon.swal2-success,
