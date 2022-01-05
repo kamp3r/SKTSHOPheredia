@@ -1,12 +1,12 @@
-.ListContainer{
-    text-align: center;
-    min-height: 50vw;
-    background-color: #f8f3d9;
+.ListContainer {
+  text-align: center;
+  min-height: 50vw;
+  background-color: #f8f3d9;
 }
-.categoryTitleR{
-    font-size: 3.5rem;
-    width: 100%;
-    background-color: black;
-    color: #fafafa;
-    padding: 1rem;
+.categoryTitleR {
+  font-size: 3.5rem;
+  width: 100%;
+  background-color: black;
+  color: #fafafa;
+  padding: 1rem;
 }

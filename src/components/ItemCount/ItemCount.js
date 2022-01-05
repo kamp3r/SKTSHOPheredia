@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./ItemCount.css";
 
-const ItemCount = ({ initial, stock, onAdd}) => {
+const ItemCount = ({ initial, stock, onAdd }) => {
   const [elementos, setElementos] = useState(initial);
   const [disabledAdd, setDisabledAdd] = useState(true);
   const [disabledSuma, setDisabledSuma] = useState(false);
@@ -40,7 +40,8 @@ const ItemCount = ({ initial, stock, onAdd}) => {
         <button
           onClick={resta}
           disabled={disabledResta}
-          className="decremento ButtCount">
+          className="decremento ButtCount"
+        >
           <i className="fas fa-minus"></i>
         </button>
         <button className="numeroSeleccionado">{elementos}</button>

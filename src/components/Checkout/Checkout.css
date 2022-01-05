@@ -20,7 +20,7 @@
   font-size: 2rem;
 }
 
-.modal-header .btn-close{
+.modal-header .btn-close {
   display: none;
 }
 
@@ -58,7 +58,8 @@ option {
 
 .fa-cc-visa,
 .fa-cc-mastercard,
-.fa-cc-amex, .fa-money-bill-wave-alt {
+.fa-cc-amex,
+.fa-money-bill-wave-alt {
   font-size: 4rem;
 }
 
@@ -74,14 +75,14 @@ option {
   justify-content: center;
 }
 
-#inputUserMail{
+#inputUserMail {
   text-align: center;
 }
-#inputState{
+#inputState {
   height: 5rem;
 }
 
-.buyingBy{
+.buyingBy {
   text-align: center;
   font-size: 3rem;
 }
@@ -93,30 +94,29 @@ option {
   font-size: 1.5rem;
 }
 
-.swal2-popup{
+.swal2-popup {
   background-color: #f5f4d1;
 }
 
-.swal2-title{
-  font-size: 3rem
+.swal2-title {
+  font-size: 3rem;
 }
-.swal2-html-container{
-  font-size:2rem
+.swal2-html-container {
+  font-size: 2rem;
 }
-.swal2-styled.swal2-confirm{
+.swal2-styled.swal2-confirm {
   font-size: 1.5rem;
   background-color: #daac42;
 }
 
-.swal2-icon.swal2-success [class^="swal2-success-line"]{
-  background-color: #e7a60f
+.swal2-icon.swal2-success [class^="swal2-success-line"] {
+  background-color: #e7a60f;
 }
 
-.swal2-icon.swal2-success, .swal2-success-ring{
-  border: .3em solid #ffe096 !important
+.swal2-icon.swal2-success,
+.swal2-success-ring {
+  border: 0.3em solid #ffe096 !important;
 }
-
-
 
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {

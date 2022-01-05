@@ -9,7 +9,7 @@ import Error from "../Error/Error";
 
 const ItemDetailContainer = () => {
   const [item, setItem] = useState([]);
-  const [found, setFound] = useState()
+  const [found, setFound] = useState();
   let { id } = useParams();
   const [isLoading, setIsLoading] = useState(true);
 
@@ -18,14 +18,14 @@ const ItemDetailContainer = () => {
       const getProducts = async () => {
         setIsLoading(true);
         const prodQ = doc(db, "products", id);
-        const prodCapt = await getDoc(prodQ)
+        const prodCapt = await getDoc(prodQ);
         if (prodCapt.exists()) {
           setItem({ ...prodCapt.data(), id: id });
           setIsLoading(false);
-          setFound(true)
+          setFound(true);
         } else {
-          setIsLoading(false)
-          setFound(false)
+          setIsLoading(false);
+          setFound(false);
         }
       };
       getProducts();
@@ -34,7 +34,13 @@ const ItemDetailContainer = () => {
 
   return (
     <div className="itemDetail">
-      {isLoading ? <Spinner/> : (found ? <ItemDetail item={item} /> : <Error msg={'El producto no existe'}/>)}
+      {isLoading ? (
+        <Spinner />
+      ) : found ? (
+        <ItemDetail item={item} />
+      ) : (
+        <Error msg={"El producto no existe"} />
+      )}
     </div>
   );
 };

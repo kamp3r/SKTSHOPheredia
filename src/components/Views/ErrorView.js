@@ -1,11 +1,11 @@
-import React from 'react'
-import Error from '../Error/Error'
+import React from "react";
+import Error from "../Error/Error";
 const ErrorView = () => {
-    return (
-        <div>
-            <Error msg={'La pagina no existe'}/>
-        </div>
-    )
-}
+  return (
+    <div>
+      <Error msg={"La pagina no existe"} />
+    </div>
+  );
+};
 
-export default ErrorView
+export default ErrorView;

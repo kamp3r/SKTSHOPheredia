@@ -1,132 +1,127 @@
-.signInUpLog{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 60rem;
+.signInUpLog {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 60rem;
 }
 
-.formLog{
-    display: flex;
-    min-height: 45rem;
-    width: 45%;
-    align-items: center;
-    justify-content: center;
-    background-color: #fff;
-    border-radius: 1rem;
-    box-shadow: 10px 10px 5px #c7be49;
-    margin: 2rem;
-    padding: 1rem;
+.formLog {
+  display: flex;
+  min-height: 45rem;
+  width: 45%;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  border-radius: 1rem;
+  box-shadow: 10px 10px 5px #c7be49;
+  margin: 2rem;
+  padding: 1rem;
 }
 
-.formLog input{
+.formLog input {
+  width: 100%;
+}
+
+.formLog label {
+  font-size: 1.8rem;
+}
+
+.form-check-input[type="checkbox"] {
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  margin: 0 auto;
+}
+
+.buttonContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem;
+}
+.buttonContainer button {
+  margin: 1rem;
+  font-size: 1.8rem;
+  border-radius: 1rem;
+}
+.errorMsg {
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+#provReg {
+  height: 3.5rem;
+}
+
+@media screen and (max-width: 1200px) {
+  .cFormContLog {
+    width: 60%;
+  }
+
+  .formLog {
+    width: 60%;
+  }
+
+  .formLog input {
     width: 100%;
-}
+  }
 
-.formLog label{
-    font-size: 1.8rem;
-}
+  .formLog .form-label {
+    width: 50%;
+    margin-left: 1rem;
+  }
 
-.form-check-input[type="checkbox"]{
+  .cFormChecked {
+    width: 50%;
+    margin: 1rem auto;
+  }
+
+  .form-check-input[type="checkbox"] {
     width: 2rem;
     height: 2rem;
     display: flex;
     margin: 0 auto;
+  }
 }
 
-.buttonContainer{
+@media screen and (max-width: 767px) {
+  .selectProv {
+    width: 60%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .cFormContLog {
+    width: 70%;
+  }
+
+  .formLog {
+    width: 85%;
+  }
+
+  .formLog input {
+    width: 100%;
+  }
+
+  .formLog .form-label {
+    width: 60%;
+    margin-left: 1rem;
+  }
+
+  .form-check-input[type="checkbox"] {
+    width: 2rem;
+    height: 2rem;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 1rem;
-}
-.buttonContainer button{
-    margin: 1rem;
-    font-size: 1.8rem;
-    border-radius: 1rem;
+    margin: 0 auto;
+  }
 
-}
-.errorMsg{
-    font-size: 1.5rem;
-    text-align: center;
-}
-
-#provReg{
-    height: 3.5rem;
-}
-
-
-@media screen and (max-width: 1200px){
-
-    .cFormContLog{
-        width: 60%;
-    }
-
-    .formLog{
-      width: 60%;
-    }
-
-    .formLog input {
-        width: 100%;
-    }
-
-    .formLog .form-label{
-        width: 50%;
-        margin-left: 1rem;
-    }
-
-    .cFormChecked{
-        width: 50%;
-        margin: 1rem auto;
-    }
-
-    .form-check-input[type="checkbox"]{
-        width: 2rem;
-        height: 2rem;
-        display: flex;
-        margin: 0 auto;
-    }
-}
-
-@media screen and (max-width: 767px){
-    .selectProv{
-        width: 60%;
-    }
-}
-
-
-@media screen and (max-width: 600px){
-    .cFormContLog{
-        width: 70%;
-    }
-
-    .formLog{
-      width: 85%;
-    }
-
-    .formLog input {
-        width: 100%;
-    }
-
-    .formLog .form-label{
-        width: 60%;
-        margin-left: 1rem;
-    }
-
-    .form-check-input[type="checkbox"]{
-        width: 2rem;
-        height: 2rem;
-        display: flex;
-        margin: 0 auto;
-    }
-
-
-    .cFormChecked{
-        width: 72%;
-        margin: 1rem auto;
-    }
-    .selectProv{
-        width: 72%;
-    }
+  .cFormChecked {
+    width: 72%;
+    margin: 1rem auto;
+  }
+  .selectProv {
+    width: 72%;
+  }
 }

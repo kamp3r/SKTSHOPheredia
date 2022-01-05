@@ -1,9 +1,9 @@
-.grillaProductos{
-    display: grid;
-    gap: 5rem;
-    grid-template-columns: repeat( auto-fit, minmax(35rem, 1fr) );
-    align-items: center;
-    justify-items: center;
-    background-color: #f8f3d9;
-    padding: 4rem 0;
+.grillaProductos {
+  display: grid;
+  gap: 5rem;
+  grid-template-columns: repeat(auto-fit, minmax(35rem, 1fr));
+  align-items: center;
+  justify-items: center;
+  background-color: #f8f3d9;
+  padding: 4rem 0;
 }

@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import SignUpMail from "../SignUpMail/SignUpMail";
 import MyAccount from "../MyAccount/MyAccount";
 import { UserContext } from "../UserContext/UserContext";

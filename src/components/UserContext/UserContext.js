@@ -6,7 +6,7 @@ import {
   signInWithEmailAndPassword,
   signOut,
   sendEmailVerification,
-  onAuthStateChanged
+  onAuthStateChanged,
 } from "firebase/auth";
 import { addDoc, collection } from "firebase/firestore";
 export const UserContext = createContext();
@@ -21,40 +21,37 @@ const valoresIniciales = {
   provincia: "",
 };
 
-export const UserProvider = ({children}) => {
+export const UserProvider = ({ children }) => {
   const [userReg, setUserReg] = useState(valoresIniciales);
   const [validated, setValidated] = useState(false);
   const [registered, setRegistered] = useState(false);
   const [usuarioGlobal, setUsuarioGlobal] = useState(null);
   const [errorMsg, setErrorMsg] = useState("");
   const [userMail, setUserMail] = useState("");
-  const [emailVerificated, setEmailVerificated] = useState(true)
-  
-  
+  const [emailVerificated, setEmailVerificated] = useState(true);
 
   useEffect(() => {
-    onAuthStateChanged(auth, async(logFirebase) => {
-      if (logFirebase) { 
+    onAuthStateChanged(auth, async (logFirebase) => {
+      if (logFirebase) {
         setUsuarioGlobal(logFirebase);
         setUserMail(logFirebase.email);
         if (!logFirebase.emailVerified) {
-          sendEmailVerification(logFirebase)   
-          let intervalVerified = setInterval(() =>{
-            setEmailVerificated(logFirebase.emailVerified)
-            logFirebase.reload().then(()=>{
-              if(logFirebase.emailVerified === true){
-                setEmailVerificated(logFirebase.emailVerified)
-                clearInterval(intervalVerified)
+          sendEmailVerification(logFirebase);
+          let intervalVerified = setInterval(() => {
+            setEmailVerificated(logFirebase.emailVerified);
+            logFirebase.reload().then(() => {
+              if (logFirebase.emailVerified === true) {
+                setEmailVerificated(logFirebase.emailVerified);
+                clearInterval(intervalVerified);
               }
-            })
-          }, 5000)
+            });
+          }, 5000);
         }
       } else {
         setUsuarioGlobal(null);
       }
     });
   }, []);
-  
 
   const handleSignOut = () => {
     signOut(auth);
@@ -80,10 +77,10 @@ export const UserProvider = ({children}) => {
           .then((userCredential) => {
             const user = userCredential.user;
             Swal.fire(
-              'Genial!',
+              "Genial!",
               `Te registraste con tu email: ${user.email}`,
-              'success'
-            )
+              "success"
+            );
             setUserMail(email);
             const nuevoUser = {
               ...userReg,
@@ -103,8 +100,7 @@ export const UserProvider = ({children}) => {
             }
           });
       } else {
-        signInWithEmailAndPassword(auth, email, password)
-        .catch((error) => {
+        signInWithEmailAndPassword(auth, email, password).catch((error) => {
           if (error.code === "auth/user-not-found") {
             setErrorMsg("Email no encontrado, registrate!");
           }
@@ -115,8 +111,6 @@ export const UserProvider = ({children}) => {
       }
     }
   }
-
-  
 
   return (
     <UserContext.Provider
@@ -132,7 +126,7 @@ export const UserProvider = ({children}) => {
         changeHandler,
         userReg,
         setUserReg,
-        emailVerificated
+        emailVerificated,
       }}
     >
       {children}
