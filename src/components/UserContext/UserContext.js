@@ -78,7 +78,7 @@ export const UserProvider = ({ children }) => {
             const user = userCredential.user;
             Swal.fire(
               "Genial!",
-              `Te registraste con tu email: ${user.email}`,
+              `Te registraste con tu email: ${user.email}.\nRecorda dirigirte a tu casilla para verificar el mail y poder utilizar la seccion "Mi Cuenta"`,
               "success"
             );
             setUserMail(email);

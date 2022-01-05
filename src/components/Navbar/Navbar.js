@@ -44,9 +44,9 @@ const Navbar = () => {
       </ul>
       
       {cart.length ? (
-        <NavLink onClick={ocultar} to="/Cart" >
+        <Link onClick={ocultar} to="/Cart" >
           <CartWidget />
-        </NavLink>
+        </Link>
       ) : (
         <div></div>
       )}

@@ -470,7 +470,15 @@ const Checkout = ({mailUser}) => {
                 <CModalTitle>Tu pago fue procesado con exito!</CModalTitle>
               </CModalHeader>
 
-              <CModalBody>Tu ID de transaccion es: {purchaseId}</CModalBody>
+              <CModalBody>
+                Tu ID de transaccion es: {purchaseId}
+                {cardType === "money" ? (
+              <p>
+               El CBU para transferencia es: 666133771201031773122
+               <br />
+               Banco Ficticio S.A.
+              </p>) : (<></>)}
+              </CModalBody>
 
               <CModalFooter>
                 <Link to="/">
