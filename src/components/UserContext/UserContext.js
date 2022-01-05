@@ -1,4 +1,5 @@
 import React, { useState, createContext, useEffect } from "react";
+import Swal from "sweetalert2";
 import { auth, db } from "../../firebase/firebaseConfig";
 import {
   createUserWithEmailAndPassword,
@@ -78,9 +79,11 @@ export const UserProvider = ({children}) => {
         await createUserWithEmailAndPassword(auth, email, password)
           .then((userCredential) => {
             const user = userCredential.user;
-            alert(
-              `Creaste tu usuario correctamente con tu email ${user.email}`
-            );
+            Swal.fire(
+              'Genial!',
+              `Te registraste con tu email: ${user.email}`,
+              'success'
+            )
             setUserMail(email);
             const nuevoUser = {
               ...userReg,
