@@ -427,7 +427,7 @@ const Checkout = ({mailUser}) => {
                       className="col-form-label-lg"
                       htmlFor="inputVencimiento"
                     >
-                      Vencimiento
+                      Vencimiento(MMAA)
                     </CFormLabel>
                   </CFormFloating>
                 </CCol>
