@@ -12,7 +12,7 @@ const Navbar = () => {
 
   const toggle = () => setClickeado(!clickeado);
   const ocultar = () => setClickeado(false)
-  const mostrar = () => setClickeado(true)
+
 
   return (
     <nav className="NavbarItems">
@@ -26,19 +26,19 @@ const Navbar = () => {
         <i className={clickeado ? "fas fa-times" : "fas fa-bars"}></i>
       </div>
       <ul className={clickeado ? "navMenu activo" : "navMenu"}>
-        <NavLink to="/" onClick={toggle} onBlur={ocultar} onFocus={mostrar} className="nav-links">
+        <NavLink to="/" onClick={toggle}className="nav-links">
           Home
         </NavLink>
-        <NavLink to="/category/Skates" onClick={toggle} onBlur={ocultar} onFocus={mostrar} className="nav-links">
+        <NavLink to="/category/Skates" onClick={toggle}className="nav-links">
           Skates
         </NavLink>
-        <NavLink to="/category/Rollers" onClick={toggle} onBlur={ocultar} onFocus={mostrar} className="nav-links">
+        <NavLink to="/category/Rollers" onClick={toggle} className="nav-links">
           Rollers
         </NavLink>
-        <NavLink to="/category/BMX" onClick={toggle} onBlur={ocultar} onFocus={mostrar} className="nav-links">
+        <NavLink to="/category/BMX" onClick={toggle}className="nav-links">
           BMX
         </NavLink>
-        <NavLink to="/MyAccount" onClick={toggle} onBlur={ocultar} onFocus={mostrar} className="nav-links">
+        <NavLink to="/MyAccount" onClick={toggle}className="nav-links">
           {usuarioGlobal ? "Mi cuenta" : "Iniciar Sesion"}
         </NavLink>
       </ul>
